@@ -5,15 +5,15 @@ Living checklist for the portfolio rebuild. Check items off as you go. Design de
 ## Phase 0 — Tooling foundation
 - [x] Scaffold Vite + React + TypeScript project
 - [x] ESLint configured
-- [ ] Wire up `@tailwindcss/vite` plugin in `vite.config.ts`
-- [ ] Add `@import "tailwindcss";` + `@plugin "daisyui";` to `src/index.css`
-- [ ] Strip leftover default Vite template CSS (`:root` vars, `#root` sizing, `h1`/`h2`/`code` rules)
-- [ ] Gut default counter demo out of `App.tsx`
+- [X] Wire up `@tailwindcss/vite` plugin in `vite.config.ts`
+- [X] Add `@import "tailwindcss";` + `@plugin "daisyui";` to `src/index.css`
+- [X] Strip leftover default Vite template CSS (`:root` vars, `#root` sizing, `h1`/`h2`/`code` rules)
+- [X] Gut default counter demo out of `App.tsx`
 
 ## Phase 1 — Design system
-- [ ] Define custom DaisyUI dark theme: `base-100` (~#0d0d0d–#121212), `base-200`/`base-300` one shade lighter, `primary` = blue accent
-- [ ] Pick fonts: a mono face for the terminal-style line, a sans/display face for the name/headings
-- [ ] Decide global layout shell (max-width container? full-bleed sections?)
+- [X] Define custom DaisyUI dark theme: `base-100` (~#0d0d0d–#121212), `base-200`/`base-300` one shade lighter, `primary` = blue accent **(Standard DaisyUI dark was fine)**
+- [X] Pick fonts: a mono face for the terminal-style line, a sans/display face for the name/headings
+- [X] Decide global layout shell (max-width container? full-bleed sections?) — **full-bleed sections, alternating base-100/base-200 backgrounds, with an inner max-w-6xl/7xl content wrapper per section**
 - [ ] Set up a basic folder structure under `src/` (e.g. `components/`, `sections/`)
 
 ## Phase 2 — Hero section
