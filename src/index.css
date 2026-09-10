@@ -5,6 +5,55 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+#hero {
+  font-family: 'Roboto', sans-serif;
+  background: #EEAECA;
+  background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+#start-execute {
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  opacity: 0.5;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+
+/* animated stuff */
+
+.elipsis::after {
+  content: '...';
+  animation: typingElipsis 3s steps(4, end) infinite;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  white-space: nowrap;
+  width:2.2ch;
+  
+}
+
+.bounce5s {
+  animation-name: bounceAnimation;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: both;
+}
+
+.whoami {
+  animation: typing 2s steps(7, end) forwards;
+  overflow: hidden;
+  /* margin: 0 auto; */
+  white-space: nowrap;
+  width: 0; /* Start with no width */
+  display: inline-block;
+}
+
 .typewriter-cursor::after {
   content: '_';
   animation: blink 1s step-end infinite;
@@ -12,4 +61,19 @@
 
 @keyframes blink {
   50% { opacity: 0; }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 7ch; } /* Adjust width to match the length of "whoami" */
+}
+
+@keyframes typingElipsis {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes bounceAnimation {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-30px); }
 }
