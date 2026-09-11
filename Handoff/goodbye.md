@@ -3,4 +3,10 @@
 
 
 # Next Task:
+
+?
+
+
+# Past Tasks:
 Fix "whoami" TEXT not cenered
+**Fixed: 11/09/2026**

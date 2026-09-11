@@ -14,13 +14,13 @@ Living checklist for the portfolio rebuild. Check items off as you go. Design de
 - [X] Define custom DaisyUI dark theme: `base-100` (~#0d0d0d–#121212), `base-200`/`base-300` one shade lighter, `primary` = blue accent **(Standard DaisyUI dark was fine)**
 - [X] Pick fonts: a mono face for the terminal-style line, a sans/display face for the name/headings
 - [X] Decide global layout shell (max-width container? full-bleed sections?) — **full-bleed sections, alternating base-100/base-200 backgrounds, with an inner max-w-6xl/7xl content wrapper per section**
-- [ ] Set up a basic folder structure under `src/` (e.g. `components/`, `sections/`)
+- [X] Set up a basic folder structure under `src/` (e.g. `components/`, `sections/`)
 
 ## Phase 2 — Hero section
 - [ ] Two-column layout (text left, visual right), responsive fallback to stacked on mobile
-- [ ] Terminal-style line: `matiyenga.online:~$ whoami` (green prompt styling)
-- [ ] Name: "MATTHEW MATIYENGA" — large, bold, white
-- [ ] Subtitle: "APPLICATIONS DEVELOPER" in blue accent
+- [X] Terminal-style line: `matiyenga.online:~$ whoami` (green prompt styling)
+- [X] Name: "MATTHEW MATIYENGA" — large, bold, white
+- [X] Subtitle: "APPLICATIONS DEVELOPER" in blue accent - **Changed to "Aspiring Backend Software Engineer & Web Developer"**
 - [ ] Decide: short "what I do" line between subtitle and scroll cue, or skip it
 - [ ] "SEE MORE" + chevron scroll cue, anchored to bottom of viewport
 - [ ] Empty placeholder div for the particle visual (right column)
