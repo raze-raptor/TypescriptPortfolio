@@ -30,10 +30,11 @@ Living checklist for the portfolio rebuild. Check items off as you go. Design de
 - [ ] Configure a blob/circle mask preset, blue accent colour
 - [ ] Confine particles to the shape (polygon mask or similar ready-made preset)
 - [ ] Decide + implement mouse-reactivity (or skip if it hurts performance/clarity)
+- **Not started — superseded for now.** A 3D dotted globe (`cobe` via Magic UI's `Globe` component) was built instead, but landed in the About section, not the hero. tsParticles for the hero itself is still undone.
 
 ## Phase 4 — Remaining sections
 - [ ] Decide full page structure (About, Projects, Contact — confirm scope/order)
-- [ ] About section: content + layout
+- [X] About section: content + layout — kicker/name/subtitle + bio paragraphs in `#about-left-content`, plus a rotating dotted globe (`cobe`/Magic UI) in `#about-right-content`
 - [ ] Projects section: content source (hardcoded list vs. data file), card layout via DaisyUI
 - [ ] Contact section: form or just links (email/LinkedIn/GitHub)?
 - [ ] Nav/scroll: "SEE MORE" scrolls to next section; consider a persistent nav if page grows long

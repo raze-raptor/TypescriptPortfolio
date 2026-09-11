@@ -48,3 +48,25 @@ No application code was written by the AI — guidance/plan only, per working ag
 **What happened:** When asked how to add a blinking cursor and a pulsing background effect, the AI handed over complete, paste-ready CSS (`@keyframes` blocks and full rules) rather than explaining the technique and pointing to references. This oversteps the working agreement — the only standing exception is DaisyUI markup/class snippets (inert class names), not authored CSS logic like animations. The user caught this and corrected it.
 
 **Correction going forward:** For CSS effects (animations, transitions, etc.) as with TSX logic, the AI will explain the concept/technique and point to relevant docs or a short illustrative fragment (not a complete, drop-in block), and let the user write the actual rule. See the corrected explanation of the typewriter effect given immediately after this correction as the reference example of the right level of guidance.
+
+---
+
+## 2026-09-11 — Terminal prompt alignment bug, diagnosed and fixed
+
+**Prompt:** "How do I fix this? The whoami isnt centered with the data prefix" (with a screenshot).
+
+**What it helped with:** Diagnosed why the `:~$` prefix and the `whoami` text weren't visually aligned (baseline alignment between DaisyUI's `mockup-code` prefix pseudo-element and a larger custom `text-lg` code element), verifying the cause and the fix by testing both the current markup and a candidate fix in a headless browser (Chromium + Firefox) before recommending it. Fix identified: add `flex items-center` to the `<pre>`. Guidance only — the class was typed in by the user.
+
+---
+
+## 2026-09-11 — Section-seam blend effect: attempted, then scrapped
+
+**What happened:** Explored smoothing the hard visual seam between the hero and about section backgrounds using a blurred, gradient `::after` pseudo-element on `#hero` (a "scrim"/gradient-mask-fade technique). Iterated across several correctness passes as the user built it by hand (missing `position: relative`, `background-color` used instead of `background-image`, percentage vs. fixed sizing, missing `filter: blur()` and `z-index`). The user decided it wasn't worth pursuing further and asked for it to be removed; the AI deleted the `#hero::after` rule and reverted the now-unneeded `position: relative` on `#hero` directly, since it was cleanup of an abandoned attempt rather than new implementation.
+
+---
+
+## 2026-09-11 — 3D dotted globe: sourced, installed, and wired into the About section
+
+**Prompt:** "How do I get a 3d dotted earth in this?" → "Isnt there a Globe.tsx I can rip from somewhere?"
+
+**What it helped with:** Recommended `cobe` (a lightweight canvas globe library) and pointed to Magic UI's prebuilt `Globe` component (built on cobe) as a legitimate, ready-made source rather than hand-rolling the WebGL/canvas logic from scratch. The `shadcn` CLI install initially produced a broken, non-functional stub file; re-running `shadcn init` properly surfaced a missing import-alias configuration, which the AI fixed directly by adding a `@/*` path alias to `tsconfig.json`, `tsconfig.app.json`, and `vite.config.ts` (build-tooling boilerplate, not app design, so handled directly rather than described). Once the real component installed correctly at `src/components/ui/globe.tsx`, guided placement into `#about-right-content`, including the `relative`/`min-h-96` fix needed for the component's `absolute inset-0` internal layout to actually render — these final wiring edits were applied directly since they matched exactly what had already been specified in words.
