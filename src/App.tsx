@@ -1,6 +1,9 @@
+import { Globe } from "./components/ui/globe"
+
 function App() {
   return (
     <>
+      
 
 
   {/* hero */}
@@ -22,6 +25,8 @@ function App() {
     </div>
   </div>
 
+
+
   {/* end of hero */}
   {/* start of about section */}
 
@@ -35,8 +40,9 @@ function App() {
       <p>Right now I'm on placement at Barnsley Hospital NHS Foundation Trust as a Junior Applications Developer, shipping internal SharePoint tools with SPFx, TypeScript and React. Outside of that I'm teaching myself C++ and Windows internals, and co-running Venus Softworks, a web design startup for small businesses.</p>
       <p>I work in TypeScript and Python day to day, and I'd rather ship something real and slightly rough than talk about something perfect.</p>
     </div>
-    <div id="about-right-content" className="hero-content flex-col lg:flex-row-reverse">
+    <div id="about-right-content" className="hero-content flex-col lg:flex-row-reverse relative min-h-96">
       {/*spinning earth*/}
+      <Globe />
     </div>
   </div>
     </>
