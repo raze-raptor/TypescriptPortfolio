@@ -1,75 +1,36 @@
-# React + TypeScript + Vite
+# Matthew Matiyenga — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio site, rebuilt from scratch in TypeScript. It brings together my projects and a rough roadmap of where I'm at with education and employment — a living site rather than a static one-pager.
 
-Currently, two official plugins are available:
+Live domain: [matiyenga.online](https://matiyenga.online) · Old plain-HTML version: [raze-raptor/portfolioSite](https://github.com/raze-raptor/portfolioSite)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- **React + TypeScript**, scaffolded and bundled with **Vite**
+- **Tailwind CSS 4** + **DaisyUI** for styling/components
+- [cobe](https://github.com/shuding/cobe) (via Magic UI's `Globe` component) for the rotating dotted-globe visual
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Why this exists / how it's built
 
-## Expanding the ESLint configuration
+I'm keeping AI involvement deliberately minimal. With so much of the digital world leaning on it now, I want this repo to show what I can actually build myself — informed by what I've picked up on the Applications Development Team at Barnsley Hospital NHS Foundation Trust, and my T Level 3 course at Barnsley College.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+In practice: AI assistance on this project is used for explaining concepts, pointing at documentation, and diagnosing bugs — not for writing the application code itself. The exceptions and the handful of times that line was crossed (and corrected) are logged transparently in [AI_Usage.md](AI_Usage.md), which only records major milestones, not routine Q&A.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Project docs
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- [ROADMAP.md](ROADMAP.md) — phased build checklist, current status
+- [AI_Usage.md](AI_Usage.md) — log of major AI-assisted milestones
+- [goodbye.md](goodbye.md) — end-of-session notes for picking work back up
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Running locally
 
+```bash
+npm install
+npm run dev      # start the dev server
+npm run build    # type-check and build for production
+npm run preview  # preview the production build locally
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Feedback / contributions
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+Still in progress, and open to feedback, support, or contributions if anyone's interested feel free to open an issue or PR.
