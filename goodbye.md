@@ -4,6 +4,18 @@ End-of-session notes — what happened, what's half-done, what to pick up next t
 
 ---
 
+## 2026-09-16
+
+**Done this session:**
+- No code changes. Walked through the concepts needed to detect whether `#hero` is currently in the viewport: `useRef` (DOM handle), `useState` (visibility flag), `useEffect` (run-after-render + cleanup), and the `IntersectionObserver` API — guidance only, nothing implemented yet.
+
+**Next steps:**
+1. Implement the hero-in-view check (`useRef` + `useState` + `useEffect` + `IntersectionObserver` on `#hero` in `App.tsx`).
+2. Make pressing Enter while the hero is active scroll/navigate to the `#about` section.
+3. Keep working through the rest of the page (Projects, Contact — see `ROADMAP.md`).
+
+---
+
 ## 2026-09-11
 
 **Done this session:**
