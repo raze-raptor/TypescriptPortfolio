@@ -70,3 +70,11 @@ No application code was written by the AI — guidance/plan only, per working ag
 **Prompt:** "How do I get a 3d dotted earth in this?" → "Isnt there a Globe.tsx I can rip from somewhere?"
 
 **What it helped with:** Recommended `cobe` (a lightweight canvas globe library) and pointed to Magic UI's prebuilt `Globe` component (built on cobe) as a legitimate, ready-made source rather than hand-rolling the WebGL/canvas logic from scratch. The `shadcn` CLI install initially produced a broken, non-functional stub file; re-running `shadcn init` properly surfaced a missing import-alias configuration, which the AI fixed directly by adding a `@/*` path alias to `tsconfig.json`, `tsconfig.app.json`, and `vite.config.ts` (build-tooling boilerplate, not app design, so handled directly rather than described). Once the real component installed correctly at `src/components/ui/globe.tsx`, guided placement into `#about-right-content`, including the `relative`/`min-h-96` fix needed for the component's `absolute inset-0` internal layout to actually render — these final wiring edits were applied directly since they matched exactly what had already been specified in words.
+
+---
+
+## 2026-09-18 — Hero-in-view detection and Enter-to-scroll
+
+**Prompt:** Picked up from the prior session's unfinished goal (see 2026-09-16 in `goodbye.md`): detect whether `#hero` is in the viewport, then make pressing Enter while it's visible scroll to `#about`.
+
+**What it helped with:** Guided, piece by piece, the user's own implementation of two `useEffect` hooks in `App.tsx` — one setting up an `IntersectionObserver` on `#hero` (wired to `heroRef`/`heroVisible` state), the other a `keydown` listener that scrolls to `#about` when Enter is pressed and the hero is visible. All code typed by the user; AI gave concept explanations, syntax breakdowns (arrow functions, dependency arrays, closures/stale state, `ref` vs. observer roles), and debugging help for real mistakes along the way — a duplicate `useState` import, a misplaced `return` breaking the component's JSX return, `observer.disconnect()` called immediately instead of returned as cleanup, a missing `ref={heroRef}` on the hero div (the actual root cause of "nothing happens on Enter, no errors"), and an instant-snap `scrollIntoView()` missing `{ behavior: 'smooth' }`.
