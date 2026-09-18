@@ -4,27 +4,41 @@ import { createRoot } from 'react-dom/client';
 
 function App() {
 
+  // variables
   const heroRef = useRef(null);
 
   const [heroVisible, setHeroVisible] = useState(false);
 
+
+  // useEffect - creates an observer to watch the viewport for the hero
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {setHeroVisible(entries[0].isIntersecting)})
     if (heroRef.current) {
-      observer.observe(heroRef.current)
+      observer.observe(heroRef.current) // checking current page
     }
     
     return () => {
       observer.disconnect();
     };
-    
   }, []);
+
+  // useEffect - the press enter listner
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => { if (event.key === 'Enter' && heroVisible) {
+      document.getElementById('about')?.scrollIntoView() // personal note: duhh "document.getElementById() is just getting a litteral element by its ID"
+    }}
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => { 
+      document.removeEventListener('keydown', handleKeyDown); 
+    }
+  }, [heroVisible]);
+
+  // end of variables
 
 
   return (
     <>
-      
-
 
   {/* hero */}
   <div id="hero" className="hero min-h-screen bg-base-200">
