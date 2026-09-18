@@ -41,7 +41,7 @@ function App() {
     <>
 
   {/* hero */}
-  <div id="hero" className="hero min-h-screen bg-base-200">
+  <div id="hero" ref={heroRef} className="hero min-h-screen bg-base-200">
     <div className="hero-content">
 
 
