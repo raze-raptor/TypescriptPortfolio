@@ -1,6 +1,39 @@
 @import "tailwindcss";
-@plugin "daisyui" {
-   themes: dark --default;
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "matt-dark";
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: #14171a;
+  --color-base-200: #1b1f23;
+  --color-base-300: #242a30;
+  --color-base-content: #e4e7ea;
+
+  --color-primary: #4ade80;
+  --color-primary-content: #0d1210;
+  --color-secondary: #5aa9e6;
+  --color-secondary-content: #0d1a24;
+  --color-accent: #4ade80;
+  --color-accent-content: #0d1210;
+  --color-neutral: #1b1f23;
+  --color-neutral-content: #e4e7ea;
+
+  --color-info: #5aa9e6;
+  --color-info-content: #0d1a24;
+  --color-success: #4ade80;
+  --color-success-content: #0d1210;
+  --color-warning: #f5b95e;
+  --color-warning-content: #241a08;
+  --color-error: #f16d6d;
+  --color-error-content: #240b0b;
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
+  --border: 1px;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
@@ -200,7 +233,7 @@
     @apply border-border outline-ring/50;
    }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-base-100 text-base-content;
    }
   html {
     @apply font-sans;
