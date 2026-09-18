@@ -25,7 +25,7 @@ function App() {
   // useEffect - the press enter listner
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => { if (event.key === 'Enter' && heroVisible) {
-      document.getElementById('about')?.scrollIntoView() // personal note: duhh "document.getElementById() is just getting a litteral element by its ID"
+      document.getElementById('about')?.scrollIntoView({behavior: 'smooth'}) // personal note: duhh "document.getElementById() is just getting a litteral element by its ID"
     }}
     document.addEventListener('keydown', handleKeyDown)
 
