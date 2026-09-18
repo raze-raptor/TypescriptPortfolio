@@ -45,20 +45,22 @@ function App() {
   {/* hero */}
   <div id="hero" ref={heroRef} className="hero min-h-screen bg-base-200">
     <div className="hero-content">
-
-
-      {/* code box */}
-      <div className="glass p-4 rounded-lg shadow-lg w-145 max-w-2xl h-56 flex flex-col justify-center items-center">
-        <div className="mockup-code w-full max-w-2xl">
-          <pre data-prefix=":~$" className="flex items-center">
-            <code id="whoami" className="text-lg typewriter-cursor text-green-500 max-w-2xl whoami">whoami</code>
-          </pre>
-        </div>
-        {/*end of code box */}
-
-        <p id="start-execute" className="elipsis bounce5s">press enter</p>
+   {/* DO TS */}
+   <div id="win10cmdWINDOW" className="border border-base-300 w-full">
+    <div id="cmdTitleBar" className="flex justify-between items-center">
+      <div id="cmdBarTopLeft" className="flex items-center">
+        <img src="/cmd-icon.png" className="w-5 h-5"></img>
+        <p>Command Prompt</p>
       </div>
+      <div id="cmdBarTopRight" className="flex">
+        <img id="minimise" src="../../public/cmd-minimize.svg" className="p-1"></img>
+        <img id="maximize" src="../../public/cmd-maximize.svg" className="p-1"></img>
+        <img id="close" src="../../public/cmd-close.svg" className="p-1"></img>
+      </div>
+
     </div>
+   </div>
+  </div>
   </div>
 
 

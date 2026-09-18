@@ -45,13 +45,19 @@
 
 #hero {
   font-family: 'Roboto', sans-serif;
-  background: #EEAECA;
-  background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+  background: url('/hero.jpg');
   background-size: cover;
   background-position: center;
   color: white;
 }
 
+#cmdTitleBar {
+  background-color: #202020;
+}
+
+/* #cmdBarTopLeft {
+  position: row;
+} */
 #start-execute {
   font-family: 'Roboto', sans-serif;
   color: white;
@@ -60,6 +66,9 @@
   font-weight: bold;
   margin-top: 2rem;
 }
+
+
+
 
 /* animated stuff */
 
