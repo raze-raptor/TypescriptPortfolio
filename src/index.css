@@ -92,6 +92,15 @@
   display: inline-block;
 }
 
+.projectsCodeBox {
+  animation: typingProjects 2s steps(12, end) forwards;
+  overflow: hidden;
+  /* margin: 0 auto; */
+  white-space: nowrap;
+  width: 0; /* Start with no width */
+  display: inline-block;
+}
+
 .typewriter-cursor::after {
   content: '_';
   animation: blink 1s step-end infinite;
@@ -104,6 +113,11 @@
 @keyframes typing {
   from { width: 0 }
   to { width: 7ch; } /* Adjust width to match the length of "whoami" */
+}
+
+@keyframes typingProjects {
+  from { width: 0 }
+  to { width: 12ch; } /* Adjust width to match the length of "projcst" */
 }
 
 @keyframes typingElipsis {

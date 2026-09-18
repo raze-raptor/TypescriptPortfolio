@@ -17,7 +17,7 @@ Living checklist for the portfolio rebuild. Check items off as you go. Design de
 - [X] Set up a basic folder structure under `src/` (e.g. `components/`, `sections/`)
 
 ## Phase 2 — Hero section
-- [ ] Two-column layout (text left, visual right), responsive fallback to stacked on mobile
+- [X] Two-column layout (text left, visual right), responsive fallback to stacked on mobile
 - [X] Terminal-style line: `matiyenga.online:~$ whoami` (green prompt styling)
 - [X] Name: "MATTHEW MATIYENGA" — large, bold, white
 - [X] Subtitle: "APPLICATIONS DEVELOPER" in blue accent - **Changed to "Aspiring Backend Software Engineer & Web Developer"**
