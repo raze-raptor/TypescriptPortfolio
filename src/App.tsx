@@ -1,12 +1,26 @@
-import { Globe } from "./components/ui/globe"
-import { useState } from "react";
+import { Globe } from "./components/ui/globe";
 import { useState, useRef, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 
 function App() {
+
   const heroRef = useRef(null);
 
   const [heroVisible, setHeroVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {setHeroVisible(entries[0].isIntersecting)})
+    if (heroRef.current) {
+      observer.observe(heroRef.current)
+    }
+    
+    return () => {
+      observer.disconnect();
+    };
+    
+  }, []);
+
+
   return (
     <>
       
