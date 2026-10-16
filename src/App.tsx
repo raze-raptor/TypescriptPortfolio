@@ -38,7 +38,35 @@ View Projects</button>
 
             </div>
             <div id="right-hero" className="flex-1">
-              {/* where the globe will be */}
+              <div className="relative w-full max-w-[480px] mx-auto aspect-square">
+                <div className="orbit" aria-hidden="true">
+                  <div className="orbit-slot"><div className="orbit-chip"><span>TS</span></div></div>
+                  <div className="orbit-slot b"><div className="orbit-chip"><span>C#</span></div></div>
+                  <div className="orbit-slot c"><div className="orbit-chip"><span>PY</span></div></div>
+                </div>
+                <svg viewBox="-20 -20 440 440" role="img" aria-label="Slowly rotating wireframe globe" className="absolute inset-0 w-full h-full overflow-visible">
+                  <g transform="rotate(-18 200 200)" fill="none" style={{ stroke: '#5B625E', strokeWidth: 1 }}>
+                    <circle className="globe-ring" cx="200" cy="200" r="190" style={{ stroke: '#444A47', strokeDasharray: '1 7' }} />
+                    <circle cx="200" cy="200" r="170" style={{ stroke: 'var(--accent)', strokeOpacity: 0.75 }} />
+                    <ellipse cx="200" cy="200" rx="170" ry="52" />
+                    <ellipse cx="200" cy="119" rx="147" ry="45" />
+                    <ellipse cx="200" cy="281" rx="147" ry="45" />
+                    <ellipse cx="200" cy="60" rx="85" ry="26" />
+                    <ellipse cx="200" cy="340" rx="85" ry="26" />
+                    <ellipse className="globe-meridian" cx="200" cy="200" rx="170" ry="170" style={{ animationDelay: '0s' }} />
+                    <ellipse className="globe-meridian" cx="200" cy="200" rx="170" ry="170" style={{ animationDelay: '-4s' }} />
+                    <ellipse className="globe-meridian" cx="200" cy="200" rx="170" ry="170" style={{ animationDelay: '-8s' }} />
+                    <ellipse className="globe-meridian" cx="200" cy="200" rx="170" ry="170" style={{ animationDelay: '-12s' }} />
+                    <ellipse className="globe-meridian" cx="200" cy="200" rx="170" ry="170" style={{ animationDelay: '-16s' }} />
+                    <ellipse className="globe-meridian" cx="200" cy="200" rx="170" ry="170" style={{ animationDelay: '-20s' }} />
+                    <circle className="globe-dot" cx="200" cy="150" r="3.2" style={{ '--a': '48px', '--b': '350px', fill: 'var(--accent)', stroke: 'none' } as React.CSSProperties} />
+                    <circle className="globe-dot" cx="200" cy="205" r="3.2" style={{ '--a': '340px', '--b': '40px', fill: 'var(--accent)', stroke: 'none', animationDuration: '15s' } as React.CSSProperties} />
+                    <circle className="globe-dot" cx="200" cy="255" r="3.2" style={{ '--a': '70px', '--b': '330px', fill: 'var(--accent)', stroke: 'none', animationDuration: '10s' } as React.CSSProperties} />
+                    <circle className="globe-dot" cx="200" cy="100" r="3.2" style={{ '--a': '130px', '--b': '290px', fill: 'var(--accent)', stroke: 'none', animationDuration: '13s' } as React.CSSProperties} />
+                    <circle className="globe-dot" cx="200" cy="300" r="3.2" style={{ '--a': '280px', '--b': '120px', fill: 'var(--accent)', stroke: 'none', animationDuration: '17s' } as React.CSSProperties} />
+                  </g>
+                </svg>
+              </div>
             </div>
         </div>
       </section>
