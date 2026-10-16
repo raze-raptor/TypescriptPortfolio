@@ -42,6 +42,12 @@ This file tracks moments where AI assistance (Claude) contributed to a **major**
 
 ---
 
+## 2026-10-16 — Config: DaisyUI accent theme color
+
+**What happened:** User picked the site's purple (`--accent`) as the design's one accent color and switched the location icon to it, but `btn btn-accent` (DaisyUI) rendered a default teal, not the purple — a naming collision, not a bug: DaisyUI's `accent` is its own theme token, unrelated to the user's `--accent` CSS variable despite the shared name. This is config/setup territory (falls under "AI does the boring/mechanical parts" in the working agreement, not the no-edit rule), so AI fixed it directly: added `--color-accent: var(--accent);` and `--color-accent-content: #0B1112;` to `index.css`'s `:root` block, so DaisyUI's accent-colored components (now and in future, e.g. badges, borders) pull from the same variable instead of needing a one-off override per component.
+
+---
+
 ## 2026-10-16 — Direct build: orbiting language chips (TS/C#/Python)
 
 **What happened:** Continuation of the globe build, same session. User asked for orbiting chips showing the languages they know, in the same breath as feedback on the accent color (no separate "just do it" needed, picked up as a continuation of the already-authorized globe work). AI added three chips (TypeScript, C#, Python, as text monograms rather than fetching real brand icons/logos, avoiding a new dependency or asset) that orbit around the globe and counter-rotate so their labels stay upright while circling — ported from the design mockup's same CSS-only pattern, no JS. New CSS in `index.css` under `/* orbiting language chips */`. **Worth understanding:** the counter-rotation trick — the outer `.orbit` wrapper spins the whole ring, each `.orbit-slot` is offset 0°/120°/240° around that ring, and the chip's inner `<span>` runs its own animation rotating the *opposite* direction at the same speed, which cancels out the parent's spin so the text itself never looks upside-down.

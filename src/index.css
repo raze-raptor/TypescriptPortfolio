@@ -4,6 +4,9 @@
 
 
 :root {
+  --color-accent: var(--accent);
+  --color-accent-content: #0B1112;
+
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;

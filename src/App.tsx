@@ -8,7 +8,7 @@ function App() {
             <p className="flex items-center gap-2 font-[family-name:var(--jetbrains)]"><svg
   viewBox="0 0 24 24"
   className="w-5 h-5 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round]"
-  style={{ color: '#5fd8e6' }}
+  style={{ color: 'var(--accent)' }}
 >
   <path d="M4 17l6-6-6-6M12 19h8" />
 </svg>
@@ -35,7 +35,7 @@ South Yorkshire, England</p>
 View Projects</button>
     <button className="btn btn-dash"><span><svg viewBox="0 0 24 24" className="w-5 h-5 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round]"><path d="M7 17L17 7M7 7h10v10"></path></svg></span>Contact Me</button>
   </div>
-
+{/* SPINNING GLOBE */}
             </div>
             <div id="right-hero" className="flex-1">
               <div className="relative w-full max-w-[480px] mx-auto aspect-square">
@@ -69,6 +69,7 @@ View Projects</button>
               </div>
             </div>
         </div>
+        {/* END OF SPINNING GLOBE */}
       </section>
 
       <div className="bg-[#161918] border-y border-[#2B2F2D]">{/* ticker */}</div>
