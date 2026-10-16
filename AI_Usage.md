@@ -60,6 +60,18 @@ This file tracks moments where AI assistance (Claude) contributed to a **major**
 
 ---
 
+## 2026-10-16 — Direct build: Citadel project diagram (user said it was "fiddly," asked AI to build it)
+
+**What happened:** For the Projects section's "01 Citadel" block, user agreed the animated request-flow diagram (packet traveling Internet → Cloudflare Tunnel → Nginx Proxy Manager → Authentik SSO, then out to self-hosted services) was fiddlier than something worth hand-placing coordinate by coordinate, and asked AI to build it directly. AI ported the SVG from the design mockup into `App.tsx` (boxes, connecting lines, labels, and an animated accent-colored dot that travels the top path) and added three new animations to `index.css` under `/* diagram */`: `.diagram-pkt` (the traveling dot, animates the `cx` coordinate directly), `.diagram-flow` (dashed lines that appear to flow via animated `stroke-dashoffset`), `.diagram-pulse` (the bottom row of service boxes lighting up in sequence via staggered `animation-delay`, same stagger technique as the cycling role text and globe meridians). All with a `prefers-reduced-motion` override.
+
+---
+
+## 2026-10-16 — Citadel diagram redesign: smoother, interactive
+
+**What happened:** User asked for the diagram to be "10x better": less blocky, smoother, interactive, no new dependencies. AI rebuilt it: rounded nodes with a mono sub-label each (e.g. "NO OPEN PORTS", "PASSWORDS"), curved Bézier branches fanning out from Authentik instead of right-angle lines, and a gradient on the top connector. The packet now runs a synced 4-second cycle using native SVG `<animateMotion>` (not CSS): one packet travels Internet → Authentik, then six packets split down each branch, and glow rings fire on Authentik and the services as the packets arrive. Interaction is CSS-only: hovering a service lifts it, lights its route, and dims the rest (`:has()` selector); hovering Authentik lights every route; each service has a native SVG `<title>` tooltip. The six services and four hops now come from two small arrays (`citadelServices`, `citadelHops`) at the top of `App.tsx`, rendered with `.map()`, instead of repeated markup. **Worth understanding:** `.map()` over an array to render repeated JSX (each item needs a unique `key`), and the `:has()` selector — "style X when something inside it is hovered" — which is what lets the dimming work with no React state.
+
+---
+
 ## 2026-10-16 — Banner fix: ">_" color bug + layout gap
 
 **What happened:** User reported the ">_" prefix wasn't purple and the layout "looked weird." Root cause of the color bug: the banner's `.mono span { color: var(--accent) }` rule only applies to text inside an actual `<span>`, but ">_" was plain text in the `<p>`, not wrapped in one — fixed by wrapping it. For the "weird" layout, re-read it as: `justify-content: space-between` on a 1584px-wide row with a narrow text block and a 300px globe left a large dead gap in the middle, and the role-word list had lost its "Aiming at" context label when it was converted from the live cycling version to a static stacked list. AI tightened the layout (`space-between` → `center` with a fixed `96px` gap) and added the missing "Aiming at" label above the stack.

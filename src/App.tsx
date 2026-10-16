@@ -1,3 +1,19 @@
+const citadelHops = [
+  { name: 'Internet', sub: 'REQUEST', x: 30, w: 160 },
+  { name: 'Cloudflare Tunnel', sub: 'NO OPEN PORTS', x: 290, w: 200 },
+  { name: 'Nginx Proxy Manager', sub: 'REVERSE PROXY', x: 580, w: 200 },
+  { name: 'Authentik SSO', sub: 'ONE LOGIN', x: 870, w: 210, hub: true },
+]
+
+const citadelServices = [
+  { name: 'Nextcloud', sub: 'FILES', title: 'Files, calendar and contacts', x: 105 },
+  { name: 'Navidrome', sub: 'MUSIC', title: 'Music streaming', x: 280 },
+  { name: 'Vaultwarden', sub: 'PASSWORDS', title: 'Password manager', x: 455 },
+  { name: 'Grafana', sub: 'DASHBOARDS', title: 'Monitoring dashboards', x: 630 },
+  { name: 'Pi-hole', sub: 'DNS ADBLOCK', title: 'Network-wide ad blocking', x: 805 },
+  { name: 'Transmission', sub: 'DOWNLOADS', title: 'Torrent client', x: 980 },
+]
+
 function App() {
   return (
     <main className="bg-[#121413] bg-[radial-gradient(#2B2F2D_1px,transparent_1px)] bg-[length:28px_28px]">
@@ -143,15 +159,71 @@ View Projects</button>
           
           
 
-          <div className="max-w-[1240px] w-full mx-auto px-10">
-            <p className="text-[#A4A69F] font-[family-name:var(--jetbrains)] text-sm">SELECTED WORK</p>
-            <h3 className="text-[clamp(48px,6vw,88px)] leading-[0.95] tracking-[-0.04em] font-[family-name:var(--header)] font-bold">Citadel</h3>
-
+          <div className="max-w-[1240px] w-full mx-auto px-10 flex flex-col gap-14">
             <div className="flex flex-wrap items-end justify-between gap-6">
-              
-              
+              <div>
+                <p className="text-[#A4A69F] font-[family-name:var(--jetbrains)] text-sm">SELECTED WORK</p>
+                <h3 className="text-[clamp(48px,6vw,88px)] leading-[0.95] tracking-[-0.04em] font-[family-name:var(--header)] font-bold">Citadel</h3>
+              </div>
+              <div className="ghost font-[family-name:var(--header)] text-[240px]">01</div>
+            </div>
+
+            <div className="rounded-2xl border border-[#2B2F2D] bg-[#0D0F0E] bg-[radial-gradient(ellipse_at_85%_0%,color-mix(in_srgb,var(--accent)_12%,transparent),transparent_55%)] overflow-x-auto">
+              <svg
+                viewBox="0 0 1100 340"
+                role="img"
+                aria-label="Animated diagram: a request travels from the internet through Cloudflare Tunnel and Nginx Proxy Manager to Authentik single sign-on, then out to self-hosted services: Nextcloud, Navidrome, Vaultwarden, Grafana, Pi-hole and Transmission"
+                className="diagram block w-full min-w-[760px] h-auto"
+              >
+                <defs>
+                  <linearGradient id="citadel-line" gradientUnits="userSpaceOnUse" x1="190" y1="0" x2="870" y2="0">
+                    <stop offset="0" stopColor="#3A3F3C" />
+                    <stop offset="1" style={{ stopColor: 'var(--accent)' }} />
+                  </linearGradient>
+                </defs>
+
+                <path className="diagram-flow" d="M190 68H290M490 68H580M780 68H870" stroke="url(#citadel-line)" strokeWidth="1.5" />
+
+                {citadelServices.map((s) => {
+                  const route = `M975 100C975 155 ${s.x} 150 ${s.x} 206`
+                  return (
+                    <g key={s.name} className="svc">
+                      <title>{`${s.name}: ${s.title}`}</title>
+                      <path className="svc-route diagram-flow" d={route} strokeWidth="1.5" />
+                      <g className="node">
+                        <rect className="node-box" x={s.x - 75} y="206" width="150" height="60" rx="14" />
+                        <rect className="node-glow" x={s.x - 75} y="206" width="150" height="60" rx="14" />
+                        <text className="node-label" x={s.x} y="233" textAnchor="middle">{s.name}</text>
+                        <text className="node-sub" x={s.x} y="252" textAnchor="middle">{s.sub}</text>
+                      </g>
+                      <circle r="4" className="diagram-packet" opacity="0">
+                        <animateMotion dur="4s" repeatCount="indefinite" path={route} keyPoints="0;0;1;1" keyTimes="0;0.5;0.8;1" calcMode="spline" keySplines="0 0 1 1;0.45 0 0.25 1;0 0 1 1" />
+                        <animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.5;0.53;0.78;0.82;1" />
+                      </circle>
+                    </g>
+                  )
+                })}
+
+                {citadelHops.map((h) => (
+                  <g key={h.name} className={h.hub ? 'node hub-node' : 'node'}>
+                    <rect className={h.hub ? 'node-box hub' : 'node-box'} x={h.x} y="36" width={h.w} height="64" rx="16" />
+                    {h.hub && <rect className="node-glow hub" x={h.x} y="36" width={h.w} height="64" rx="16" />}
+                    <text className="node-label" x={h.x + h.w / 2} y="65" textAnchor="middle">{h.name}</text>
+                    <text className="node-sub" x={h.x + h.w / 2} y="85" textAnchor="middle">{h.sub}</text>
+                  </g>
+                ))}
+
+                <circle r="5" className="diagram-packet" opacity="0">
+                  <animateMotion dur="4s" repeatCount="indefinite" path="M110 68H975" keyPoints="0;1;1" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.25 1;0 0 1 1" />
+                  <animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.05;0.48;0.52;1" />
+                </circle>
+
+                <text className="caption" x="30" y="318">20+ CONTAINERS, ONE LOGIN</text>
+                <text className="caption" x="1070" y="318" textAnchor="end">HOVER A SERVICE</text>
+              </svg>
             </div>
           </div>
+
 
 
         </div>

@@ -1,6 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Schibsted+Grotesk:wght@400;500;700&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Schibsted+Grotesk:wght@400;500;700&display=swap');
 
 html {
   scroll-behavior: smooth;
@@ -162,6 +162,100 @@ html {
 }
 @media (prefers-reduced-motion: reduce) {
   .bob { animation: none; }
+}
+
+.ghost {
+  font-weight: 700;
+  line-height: .8;
+  letter-spacing: -.05em;
+  color: transparent;
+  -webkit-text-stroke: 1px #2F3431;
+  user-select: none;
+}
+
+/* diagram */
+
+.diagram path { fill: none; }
+
+.diagram-flow {
+  stroke-dasharray: 6 8;
+  animation: diagramFlow 1.2s linear infinite;
+}
+@keyframes diagramFlow {
+  to { stroke-dashoffset: -14; }
+}
+
+.diagram .node {
+  transform-box: fill-box;
+  transition: transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.diagram .node:hover { transform: translateY(-3px); }
+
+.diagram .node-box {
+  fill: #141716;
+  stroke: #3A3F3C;
+  transition: stroke .3s, fill .3s;
+}
+.diagram .node-box.hub { stroke: var(--accent); }
+.diagram .node:hover .node-box {
+  stroke: var(--accent);
+  fill: color-mix(in srgb, var(--accent) 10%, #141716);
+}
+
+.diagram .node-label {
+  fill: #ECEAE3;
+  font-family: var(--header);
+  font-size: 16px;
+  font-weight: 500;
+  pointer-events: none;
+}
+.diagram .node-sub,
+.diagram .caption {
+  fill: #A4A69F;
+  font-family: var(--jetbrains);
+  font-size: 10px;
+  letter-spacing: .08em;
+  pointer-events: none;
+}
+.diagram .caption { font-size: 12px; }
+
+/* glow rings fire when the packet arrives: hub at ~50% of the 4s cycle, services at ~80% */
+.diagram .node-glow {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  opacity: 0;
+  filter: drop-shadow(0 0 8px var(--accent));
+  animation: diagramArrive 4s ease-out infinite;
+  pointer-events: none;
+}
+.diagram .node-glow.hub { animation-name: diagramHub; }
+@keyframes diagramArrive {
+  0%, 78% { opacity: 0; }
+  82% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes diagramHub {
+  0%, 48% { opacity: 0; }
+  52% { opacity: 1; }
+  75%, 100% { opacity: 0; }
+}
+
+.diagram .svc { cursor: default; transition: opacity .3s; }
+.diagram .svc-route { stroke: #3A3F3C; transition: stroke .3s; }
+.diagram .svc:hover .svc-route,
+.diagram:has(.hub-node:hover) .svc-route { stroke: var(--accent); }
+.diagram:has(.svc:hover) .svc:not(:hover) { opacity: .3; }
+
+.diagram-packet {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diagram-flow, .diagram .node-glow { animation: none; }
+  .diagram .node { transition: none; }
+  .diagram-packet { display: none; }
 }
 
 
