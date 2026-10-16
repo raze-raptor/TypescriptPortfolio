@@ -13,7 +13,7 @@ function App() {
   <path d="M4 17l6-6-6-6M12 19h8" />
 </svg>
 South Yorkshire, England</p>
-            <h1 id="hero-name" className="text-[clamp(56px,7.4vw,108px)] leading-[0.94] tracking-[-0.04em] font-bold">Matthew<br/>Matiyenga</h1>
+            <h1 id="hero-name" className="text-[clamp(56px,7.4vw,108px)] leading-[0.94] tracking-[-0.04em] font-[family-name:var(--header)] font-bold">Matthew<br/>Matiyenga</h1>
 
             <p id="meDescription" className="max-w-[28em] text-[22px] leading-[1.45] text-[#CFCEC7] text-pretty mt-5">
     Software developer in training, learning to build things properly from the ground up.
@@ -139,7 +139,22 @@ View Projects</button>
         </div>
 
       <section id="projects">
-        <div className="dots py-32">{/* 01 Citadel */}</div>
+        <div className="dots py-32 ">
+          
+          
+
+          <div className="max-w-[1240px] w-full mx-auto px-10">
+            <p className="text-[#A4A69F] font-[family-name:var(--jetbrains)] text-sm">SELECTED WORK</p>
+            <h3 className="text-[clamp(48px,6vw,88px)] leading-[0.95] tracking-[-0.04em] font-[family-name:var(--header)] font-bold">Citadel</h3>
+
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              
+              
+            </div>
+          </div>
+
+
+        </div>
         <div className="bg-[#181B1A] py-32">{/* 02 Placement */}</div>
         <div className="dots py-32">{/* 03 This site */}</div>
       </section>
