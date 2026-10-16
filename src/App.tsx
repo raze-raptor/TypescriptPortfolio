@@ -22,14 +22,20 @@ South Yorkshire, England</p>
 <p className="flex items-center gap-2 font-[family-name:var(--jetbrains)] mt-2.5">
   <span>AIMING AT</span>
   <span className="relative inline-block w-[9.5ch] h-[1.4em]">
-    <span className="absolute top-0 left-0 role-word">BACKEND</span>
-    <span className="absolute top-0 left-0 role-word">SYSTEMS</span>
-    <span className="absolute top-0 left-0 role-word">SECURITY</span>
-    <span className="absolute top-0 left-0 role-word">FRONTEND</span>
+    <span className="absolute top-0 left-0 role-word drop-shadow-[0px_0px_14px_rgba(95,216,230,0.4)]">BACKEND</span>
+    <span className="absolute top-0 left-0 role-word drop-shadow-[0px_0px_14px_rgba(95,216,230,0.4)]">SYSTEMS</span>
+    <span className="absolute top-0 left-0 role-word drop-shadow-[0px_0px_14px_rgba(95,216,230,0.4)]">SECURITY</span>
+    <span className="absolute top-0 left-0 role-word drop-shadow-[0px_0px_14px_rgba(95,216,230,0.4)]">FRONTEND</span>
   </span>
 </p>
+  <div className="flex gap-4 mt-8">
+    <button className="btn btn-soft btn-accent"><svg viewBox="0 0 24 24" className="w-5 h-5 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round]">
+  <path d="M12 2l10 5-10 5L2 7zM2 17l10 5 10-5M2 12l10 5 10-5" />
+</svg>
+View Projects</button>
+    <button className="btn btn-dash"><span><svg viewBox="0 0 24 24" className="w-5 h-5 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round]"><path d="M7 17L17 7M7 7h10v10"></path></svg></span>Contact Me</button>
+  </div>
 
-<button class="btn btn-soft btn-accent">View Projects</button>
             </div>
             <div id="right-hero" className="flex-1">
               {/* where the globe will be */}
