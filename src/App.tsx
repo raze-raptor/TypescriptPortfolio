@@ -28,6 +28,8 @@ South Yorkshire, England</p>
     <span className="absolute top-0 left-0 role-word">FRONTEND</span>
   </span>
 </p>
+
+<button class="btn btn-soft btn-accent">View Projects</button>
             </div>
             <div id="right-hero" className="flex-1">
               {/* where the globe will be */}
