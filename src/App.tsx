@@ -1,7 +1,7 @@
 function App() {
   return (
     <main className="bg-[#121413] bg-[radial-gradient(#2B2F2D_1px,transparent_1px)] bg-[length:28px_28px]">
-      <section id="hero" className="flex items-center dots min-h-screen">
+      <section id="hero" className="relative flex items-center dots min-h-screen">
         {/* hero */}
         <div id="hero-content" className="flex flex-wrap max-w-[1240px] w-full mx-auto px-10 py-24">
           <div id="left-hero" className="flex-1 min-w-0">
@@ -22,10 +22,10 @@ South Yorkshire, England</p>
 <p className="flex items-center gap-2 font-[family-name:var(--jetbrains)] mt-2.5">
   <span>AIMING AT</span>
   <span className="relative inline-block w-[9.5ch] h-[1.4em]">
-    <span className="absolute top-0 left-0 role-word drop-shadow-[0px_0px_14px_rgba(95,216,230,0.4)]">BACKEND</span>
-    <span className="absolute top-0 left-0 role-word drop-shadow-[0px_0px_14px_rgba(95,216,230,0.4)]">SYSTEMS</span>
-    <span className="absolute top-0 left-0 role-word drop-shadow-[0px_0px_14px_rgba(95,216,230,0.4)]">SECURITY</span>
-    <span className="absolute top-0 left-0 role-word drop-shadow-[0px_0px_14px_rgba(95,216,230,0.4)]">FRONTEND</span>
+    <span className="absolute top-0 left-0 role-word drop-shadow-[0px_0px_14px_rgba(170,59,255,0.4)]">BACKEND</span>
+    <span className="absolute top-0 left-0 role-word drop-shadow-[0px_0px_14px_rgba(170,59,255,0.4)]">SYSTEMS</span>
+    <span className="absolute top-0 left-0 role-word drop-shadow-[0px_0px_14px_rgba(170,59,255,0.4)]">SECURITY</span>
+    <span className="absolute top-0 left-0 role-word drop-shadow-[0px_0px_14px_rgba(170,59,255,0.4)]">FRONTEND</span>
   </span>
 </p>
   <div className="flex gap-4 mt-8">
@@ -70,9 +70,73 @@ View Projects</button>
             </div>
         </div>
         {/* END OF SPINNING GLOBE */}
+
+        <a href="#projects" aria-label="Scroll to projects" className="absolute left-1/2 bottom-7 -translate-x-1/2 flex flex-col items-center gap-2 text-[#A4A69F]">
+          <span className="font-[family-name:var(--jetbrains)] text-xs tracking-[.08em] uppercase">Scroll</span>
+          <svg viewBox="0 0 24 24" className="bob w-8 h-8 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round]">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </a>
       </section>
 
-      <div className="bg-[#161918] border-y border-[#2B2F2D]">{/* ticker */}</div>
+        <div className="bg-[#161918] border-y border-[#2B2F2D] overflow-hidden py-5" aria-hidden="true">
+          
+          <div className="ticker-track font-[family-name:var(--jetbrains)] text-sm text-[#CFCEC7] gap-9 uppercase tracking-[.06em] flex items-center whitespace-nowrap">
+            <span className="whitespace-nowrap">TypeScript</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">Python</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">C#</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">C# MVC</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">C++</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">SPFx</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">React</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">Next.js</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">Tailwind</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">DaisyUI</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">Git</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">GitLab</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">GitHub</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">TypeScript</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">Python</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">C#</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">C# MVC</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">C++</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">SPFx</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">React</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">Next.js</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">Tailwind</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">DaisyUI</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">Git</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">GitLab</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+            <span className="whitespace-nowrap">GitHub</span>
+            <i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i>
+
+          </div>
+        </div>
 
       <section id="projects">
         <div className="dots py-32">{/* 01 Citadel */}</div>

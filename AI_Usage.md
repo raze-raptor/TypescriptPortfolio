@@ -48,6 +48,30 @@ This file tracks moments where AI assistance (Claude) contributed to a **major**
 
 ---
 
+## 2026-10-16 — One-off asset: Indeed banner export file
+
+**What happened:** User liked the hero's look enough to want it as a static banner image for their Indeed profile, and asked for a file to screenshot plus ideally a `.psd` to keep editing. AI explained a real `.psd` can't be produced by writing code (proprietary binary format; anything claiming to be one would be fake/unopenable) and built a standalone `banner/indeed-banner.html` instead — reopenable in a browser, editable as plain text (e.g. the location line), screenshot it whenever it needs updating. Static, non-animated, fixed at 1584×396px (a guess at a common banner ratio, not a verified Indeed spec — flagged for the user to confirm before use). Lives outside `src/`, not part of the actual site build; a disposable export asset, not app logic.
+
+---
+
+## 2026-10-16 — Banner update: static globe chips + full role-word list
+
+**What happened:** User wanted the banner closer to the real hero — the 3D globe's orbiting language chips back in (TS/C#/Python), and since a screenshot can't show a *cycling* animation, all four role words listed out at once instead of just one ("Backend"), stacked vertically with a short connecting line between each. AI added three `.chip` circles at fixed (non-animated) positions around the globe, and a `#role-stack` list (`BACKEND` / connector / `SYSTEMS` / connector / `SECURITY` / connector / `FRONTEND`) replacing the single "Aiming at Backend" line. Same file, same scope as the earlier banner entry — a disposable export asset outside `src/`.
+
+---
+
+## 2026-10-16 — Banner fix: ">_" color bug + layout gap
+
+**What happened:** User reported the ">_" prefix wasn't purple and the layout "looked weird." Root cause of the color bug: the banner's `.mono span { color: var(--accent) }` rule only applies to text inside an actual `<span>`, but ">_" was plain text in the `<p>`, not wrapped in one — fixed by wrapping it. For the "weird" layout, re-read it as: `justify-content: space-between` on a 1584px-wide row with a narrow text block and a 300px globe left a large dead gap in the middle, and the role-word list had lost its "Aiming at" context label when it was converted from the live cycling version to a static stacked list. AI tightened the layout (`space-between` → `center` with a fixed `96px` gap) and added the missing "Aiming at" label above the stack.
+
+---
+
 ## 2026-10-16 — Direct build: orbiting language chips (TS/C#/Python)
 
 **What happened:** Continuation of the globe build, same session. User asked for orbiting chips showing the languages they know, in the same breath as feedback on the accent color (no separate "just do it" needed, picked up as a continuation of the already-authorized globe work). AI added three chips (TypeScript, C#, Python, as text monograms rather than fetching real brand icons/logos, avoiding a new dependency or asset) that orbit around the globe and counter-rotate so their labels stay upright while circling — ported from the design mockup's same CSS-only pattern, no JS. New CSS in `index.css` under `/* orbiting language chips */`. **Worth understanding:** the counter-rotation trick — the outer `.orbit` wrapper spins the whole ring, each `.orbit-slot` is offset 0°/120°/240° around that ring, and the chip's inner `<span>` runs its own animation rotating the *opposite* direction at the same speed, which cancels out the parent's spin so the text itself never looks upside-down.
+
+---
+
+## 2026-10-16 — Banner fix: "Aiming at" label sitting beside the word stack, not above it
+
+**What happened:** User pointed out the banner's "Aiming at" label and word list were stacked vertically (label on its own line, words in a column below) instead of the label sitting beside the word column as a row. AI restructured `#role-stack` from `flex-direction: column` to `row`, grouping the four words + connectors into a new nested `.word-col` (its own column) so the label and that column sit side by side. Same disposable `banner/indeed-banner.html` asset as the earlier banner entries.

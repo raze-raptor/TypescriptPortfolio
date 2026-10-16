@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
-@import url('https://fonts.googleapis.com/css2?family=...');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
 
 
 :root {
@@ -132,6 +136,50 @@
   .globe-ring, .globe-meridian, .globe-dot { animation: none; }
 }
 
+
+/* ticker */
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tickerScroll 45s linear infinite;
+}
+
+@keyframes tickerScroll {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; }
+}
+
+.bob {
+  animation: bob 1.8s ease-in-out infinite;
+}
+@keyframes bob {
+  50% { transform: translateY(7px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bob { animation: none; }
+}
+
+
+
+
+
+
+
+/* Seperating Diving between Human and Claude's code */
+
+
+
+
+
+
+
+
+
+
 /* orbiting language chips */
 
 .orbit {
@@ -181,3 +229,4 @@
 @media (prefers-reduced-motion: reduce) {
   .orbit, .orbit-chip > span { animation: none; }
 }
+/* end orbiting language chips */
