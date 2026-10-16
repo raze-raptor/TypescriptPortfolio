@@ -1,101 +1,122 @@
 # AI Usage Log
 
-This file tracks moments where AI assistance (Claude) contributed to a **major** step in building this project — not a log of every prompt. Small lookups, one-off syntax questions, etc. are not recorded here.
+This file records where AI assistance (Claude) contributed to a **major** step in building this project. It is not a log of every prompt: small lookups, one-off syntax questions and minor tweaks are not recorded.
+
+## How to read this
+
+Every entry below is tagged with who did the work:
+
+- **[SOLO]** — written by me with no AI involvement beyond reading docs.
+- **[GUIDED]** — AI explained the concept or pointed me at the next step; **I wrote the code myself**.
+- **[AI-BUILT]** — AI wrote the code, usually because it was boilerplate, config, or fiddly coordinate work (SVG), and I asked it to.
+- **[AI-FIX]** — AI diagnosed and fixed a specific bug.
+
+Working agreement: AI explains and reviews; I write the front-end structure and logic. AI writes the mechanical parts (config, boilerplate, converting mockup HTML into JSX, hand-placed SVG) when I ask.
+
+## At a glance
+
+| Area | Who did it |
+| --- | --- |
+| Hero layout (two-column flex, centring, name, description, buttons) | **I wrote it** [GUIDED] |
+| Cycling "Aiming at" text (stacking, `@keyframes`, staggered delays, fill-mode) | **I wrote it** [GUIDED]; AI fixed one alignment bug |
+| Tech ticker (item list, duplicated track, `gap`, spacing) | **I wrote it** [GUIDED] |
+| Spinning globe and orbiting language chips | AI built it [AI-BUILT] |
+| Citadel header (label, title, flex row) | **I wrote it** [GUIDED] |
+| Citadel diagram (animated request flow) | AI built it, twice [AI-BUILT] |
+| Citadel description row and badges | **I wrote the row** [GUIDED]; AI built the `Badge` component [AI-BUILT] |
+| Section 02 (NHS placement): layout and text column | **I wrote it** [SOLO/GUIDED]; AI built the mock web part [AI-BUILT] |
+| Section 03 ("This site"): content and layer stack | **I wrote it** [SOLO]; AI supplied the ghost number and GitHub button markup |
+| Tailwind / DaisyUI config, DaisyUI accent colour | AI [AI-BUILT / AI-FIX] |
+| Indeed banner export (not part of the site) | AI built it [AI-BUILT] |
 
 ---
 
-## 2026-10-16 — Fresh rebuild: orienting in the new Vite + React + TypeScript scaffold
+## 2026-10-16 — Fresh rebuild: orienting in the Vite + React + TypeScript scaffold [GUIDED, then AI-BUILT cleanup]
 
 **Prompt:** "Explain the filesystem to me in a typescript project, where do I start, how are things MEANT to look" → "first time (ish) using a framework how do i know what to delete and where to start"
 
-**What it helped with:** Walked through the entry-point chain (`index.html` → `main.tsx` → `App.tsx`) and the convention for where code should live as the project grows. Identified everything in the default `App.tsx`/`App.css` as Vite/React template demo content (counter button, React/Vite logos, docs/Discord links, `.ticks` decoration) versus the user's own assets, and explained the tell (anything naming the tool itself, or demonstrating a framework feature rather than showing real content, is boilerplate). AI made these specific deletions directly at the user's request at the time — `react.svg`, `vite.svg`, `icons.svg`, and the corresponding JSX/CSS — since this was before the "don't edit code for me" agreement below was stated.
+**What it helped with:** Walked through the entry-point chain (`index.html` → `main.tsx` → `App.tsx`) and the convention for where code should live as the project grows. Identified everything in the default `App.tsx`/`App.css` as Vite/React template demo content (counter button, React/Vite logos, docs/Discord links, `.ticks` decoration) versus my own assets. AI made these specific deletions directly at my request at the time (`react.svg`, `vite.svg`, `icons.svg`, and the matching JSX/CSS), before the working agreement below was stated.
 
 ---
 
-## 2026-10-16 — Tailwind/DaisyUI installed but not wired up
+## 2026-10-16 — Tailwind/DaisyUI installed but not wired up [AI-FIX]
 
-**What it helped with:** Diagnosed why Tailwind utility classes (e.g. `bg-[#121413] bg-[radial-gradient(...)]`) typed into `App.tsx` weren't rendering — `tailwindcss`/`@tailwindcss/vite`/`daisyui` were present in `package.json`, but `vite.config.ts` never loaded the Tailwind Vite plugin and `index.css` had no `@import "tailwindcss";`. AI made this specific fix directly at the time (adding the plugin + import), before the no-edit agreement below was stated.
-
----
-
-## 2026-10-16 — Working agreement: AI must not edit code unless explicitly asked
-
-**What happened:** User set a standing project-wide rule: Claude must not edit any code unless explicitly told to, going forward. This supersedes any earlier back-and-forth in this session where AI made direct edits (scaffold cleanup, Tailwind wiring) — those were done before the rule was stated and are logged above for transparency, but are not the pattern going forward. From this point on, AI gives guidance/explanation only; the user writes the implementation.
+**What it helped with:** Diagnosed why Tailwind classes typed into `App.tsx` weren't rendering: `tailwindcss`, `@tailwindcss/vite` and `daisyui` were in `package.json`, but `vite.config.ts` never loaded the Tailwind plugin and `index.css` had no `@import "tailwindcss";`. AI made that fix directly (config), before the working agreement below.
 
 ---
 
-## 2026-10-16 — Hero section: two-column layout restructure
+## 2026-10-16 — Working agreement: AI must not edit code unless asked
 
-**What it helped with:** Guided (no direct edits) restructuring the hero from a single centered column to a two-column flex layout matching a design mockup — explaining `flex`/`flex-wrap`/`flex-1`/`items-center` and why centering must sit on the element that actually has height (`#hero`, not `#hero-content`); why `w-full` was needed before `max-w` + `mx-auto` could center the row; why an inline SVG icon rendered above text instead of beside it (Tailwind preflight sets `svg { display: block }`, fixed by making the parent a flex row); and how to load/apply a Google Font via `index.css`. User wrote all the JSX/CSS changes themselves. Pointed at docs for the CSS keyframe/stagger-delay technique behind the cycling role text, left for the user to implement.
-
----
-
-## 2026-10-16 — Direct edit: cycling-role-text layout bug (user said "just fix it")
-
-**What happened:** User built the `@keyframes roleCycle` animation and `.role-word`/`nth-child` stagger themselves and it worked, but the "AIMING AT [cycling word]" line was still misaligned (wrapping below the heading text instead of sitting inline). User explicitly asked AI to fix it directly rather than keep debugging it step by step. AI edited `App.tsx`: wrapped "AIMING AT" in its own `<span>` (previously a bare text node mixed with a flex child, ambiguous for layout) and gave the absolutely-positioned word stack an explicit `h-[1.4em]` (it was collapsing to zero height since all its children were `position: absolute`, taken out of normal flow). **Worth understanding:** why an element containing only absolutely-positioned children has no height of its own, and why mixing raw text with flex children in JSX can behave unpredictably — give it its own element instead.
+I set a standing project-wide rule: Claude does not edit code unless I explicitly say so. AI gives guidance and review; I write the implementation. The two earlier AI edits (scaffold cleanup, Tailwind wiring) predate the rule and are logged above for transparency. Every later AI edit in this file happened because I asked for it ("just do it", "build it for me").
 
 ---
 
-## 2026-10-16 — Direct build: spinning wireframe globe (user said "just build it")
+## 2026-10-16 — Hero section: two-column layout [GUIDED — I wrote the code]
 
-**What happened:** User was taught raw SVG fundamentals (`viewBox`, coordinate system, `<circle>`/`<ellipse>`, `fill`/`stroke`) for the right-hero globe graphic, considered a Lottie animation as an alternative (declined — adds a dependency and requires sourcing an external animation file, neither of which fit a hand-built portfolio), then explicitly said to just build the SVG globe directly rather than hand-code coordinates themselves. AI wrote the globe markup into `App.tsx` (`#right-hero`): a wireframe sphere (one outer ring circle, one accent circle, static latitude ellipses, six rotating "meridian" ellipses staggered with negative `animation-delay`s to fake 3D rotation) plus five small swaying dots, ported from the design mockup's CSS-only approach (no new dependency, same `@keyframes`/`animation-delay` technique already used for the cycling role text). New CSS added to `index.css` under `/* globe */`: `.globe-ring`, `.globe-meridian`, `.globe-dot` classes and their keyframes, plus a `prefers-reduced-motion` override. **Worth understanding:** the `rx`/`cx` properties can be CSS-animated directly (not just `transform`) — that's what makes the meridian ellipses appear to rotate in 3D without any JS; and how CSS custom properties (`--a`, `--b`) are set per-element via inline `style` and consumed inside a shared `@keyframes` rule, letting one animation definition drive five dots with different start/end positions.
-
----
-
-## 2026-10-16 — Config: DaisyUI accent theme color
-
-**What happened:** User picked the site's purple (`--accent`) as the design's one accent color and switched the location icon to it, but `btn btn-accent` (DaisyUI) rendered a default teal, not the purple — a naming collision, not a bug: DaisyUI's `accent` is its own theme token, unrelated to the user's `--accent` CSS variable despite the shared name. This is config/setup territory (falls under "AI does the boring/mechanical parts" in the working agreement, not the no-edit rule), so AI fixed it directly: added `--color-accent: var(--accent);` and `--color-accent-content: #0B1112;` to `index.css`'s `:root` block, so DaisyUI's accent-colored components (now and in future, e.g. badges, borders) pull from the same variable instead of needing a one-off override per component.
+AI explained, and **I wrote all the JSX/CSS changes**: `flex`, `flex-wrap`, `flex-1` and `items-center`; why centring has to sit on the element that actually has height (`#hero`, not `#hero-content`); why `w-full` was needed before `max-w` + `mx-auto` could centre the row; why an inline SVG rendered above its text (Tailwind's preflight sets `svg { display: block }`, fixed with a flex parent); and how to load a Google Font. I also wrote the location line, name, description and both buttons myself. The only AI-supplied markup in the hero was the raw SVG icon paths, converted to JSX because I can't derive path data.
 
 ---
 
-## 2026-10-16 — One-off asset: Indeed banner export file
+## 2026-10-16 — Cycling "Aiming at" text [GUIDED — I wrote it; AI-FIX for one bug]
 
-**What happened:** User liked the hero's look enough to want it as a static banner image for their Indeed profile, and asked for a file to screenshot plus ideally a `.psd` to keep editing. AI explained a real `.psd` can't be produced by writing code (proprietary binary format; anything claiming to be one would be fake/unopenable) and built a standalone `banner/indeed-banner.html` instead — reopenable in a browser, editable as plain text (e.g. the location line), screenshot it whenever it needs updating. Static, non-animated, fixed at 1584×396px (a guess at a common banner ratio, not a verified Indeed spec — flagged for the user to confirm before use). Lives outside `src/`, not part of the actual site build; a disposable export asset, not app logic.
+**I wrote** the stacked words (`position: absolute` inside a `relative` wrapper), the `@keyframes roleCycle` rule (fade in, hold, fade out, stay invisible), the `.role-word` class, the `:nth-child()` `animation-delay` stagger, and the `animation-fill-mode: backwards` fix for words overlapping on page load. AI taught the concepts step by step (keyframes, percentages as a share of total duration, why one recipe plus staggered delays gives a cycle, why `backwards` hides words during their delay) and reviewed each attempt.
 
----
-
-## 2026-10-16 — Banner update: static globe chips + full role-word list
-
-**What happened:** User wanted the banner closer to the real hero — the 3D globe's orbiting language chips back in (TS/C#/Python), and since a screenshot can't show a *cycling* animation, all four role words listed out at once instead of just one ("Backend"), stacked vertically with a short connecting line between each. AI added three `.chip` circles at fixed (non-animated) positions around the globe, and a `#role-stack` list (`BACKEND` / connector / `SYSTEMS` / connector / `SECURITY` / connector / `FRONTEND`) replacing the single "Aiming at Backend" line. Same file, same scope as the earlier banner entry — a disposable export asset outside `src/`.
+**AI-FIX:** when the "AIMING AT [word]" line was still misaligned I asked AI to fix it directly. It wrapped "AIMING AT" in its own `<span>` and gave the word stack an explicit `h-[1.4em]`, because a parent containing only `position: absolute` children collapses to zero height. **Worth understanding:** why absolutely-positioned children contribute no height to their parent.
 
 ---
 
-## 2026-10-16 — Direct build: Citadel project diagram (user said it was "fiddly," asked AI to build it)
+## 2026-10-16 — Tech ticker [GUIDED — I wrote it]
 
-**What happened:** For the Projects section's "01 Citadel" block, user agreed the animated request-flow diagram (packet traveling Internet → Cloudflare Tunnel → Nginx Proxy Manager → Authentik SSO, then out to self-hosted services) was fiddlier than something worth hand-placing coordinate by coordinate, and asked AI to build it directly. AI ported the SVG from the design mockup into `App.tsx` (boxes, connecting lines, labels, and an animated accent-colored dot that travels the top path) and added three new animations to `index.css` under `/* diagram */`: `.diagram-pkt` (the traveling dot, animates the `cx` coordinate directly), `.diagram-flow` (dashed lines that appear to flow via animated `stroke-dashoffset`), `.diagram-pulse` (the bottom row of service boxes lighting up in sequence via staggered `animation-delay`, same stagger technique as the cycling role text and globe meridians). All with a `prefers-reduced-motion` override.
-
----
-
-## 2026-10-16 — Citadel diagram redesign: smoother, interactive
-
-**What happened:** User asked for the diagram to be "10x better": less blocky, smoother, interactive, no new dependencies. AI rebuilt it: rounded nodes with a mono sub-label each (e.g. "NO OPEN PORTS", "PASSWORDS"), curved Bézier branches fanning out from Authentik instead of right-angle lines, and a gradient on the top connector. The packet now runs a synced 4-second cycle using native SVG `<animateMotion>` (not CSS): one packet travels Internet → Authentik, then six packets split down each branch, and glow rings fire on Authentik and the services as the packets arrive. Interaction is CSS-only: hovering a service lifts it, lights its route, and dims the rest (`:has()` selector); hovering Authentik lights every route; each service has a native SVG `<title>` tooltip. The six services and four hops now come from two small arrays (`citadelServices`, `citadelHops`) at the top of `App.tsx`, rendered with `.map()`, instead of repeated markup. **Worth understanding:** `.map()` over an array to render repeated JSX (each item needs a unique `key`), and the `:has()` selector — "style X when something inside it is hovered" — which is what lets the dimming work with no React state.
+I wrote the ticker CSS (`.ticker-track`, `width: max-content`, `translateX(-50%)` keyframes), the full technology list, and the duplicated second copy that makes the loop seamless. AI explained why the duplication is needed (the `-50%` slide must land on something identical to the start) and pointed out the missing `gap`.
 
 ---
 
-## 2026-10-17 — Citadel description row + badges (guided, then direct build)
+## 2026-10-16 — Spinning wireframe globe and orbiting language chips [AI-BUILT]
 
-**What happened:** User wrote the three-column description row under the diagram with guidance (flex row, `flex-[grow_shrink_basis]` columns, `flex-wrap` stacking). DaisyUI `badge badge-outline` rendered nearly invisible: `badge-outline` takes its colour from `--badge-color`, which a plain `badge` never sets, so it fell back to the dim body text colour. `badge-accent` then rendered teal, because DaisyUI's accent token is not picking up the `--color-accent` override in `index.css` (not yet fixed; the "View Projects" button likely has the same problem). User asked for the badges to match the mockup's neutral dark pill and said the markup was getting messy, so AI built them directly: a `Badge` component in `App.tsx` (`icon`, `className`, `children` props) holding the pill styling and purple icon once, used for the "Built with Claude…" badge and the Self-hosting / SSO / Linux tags. Also corrected `font-[family:var(--header)]` to `font-[family-name:var(--header)]`. **Worth understanding:** a React component with typed props and `children`, and why DaisyUI colour classes depend on CSS variables the variant classes set.
-
----
-
-## 2026-10-17 — Section 02 (NHS placement): mostly user-written, AI built the mock web part
-
-**What happened:** User wrote the section's structure and content themselves: the two-column flex row, the right-hand text column (label, title, description, "Internal work" note) and the badge row. AI added the ghost "02" (reusing `.ghost`), supplied the badge row snippet using the existing `Badge` component, and diagnosed why the title looked unstyled (Tailwind's preflight resets `h1`–`h6` to plain text, so headings need explicit classes). When the user asked for it, AI built the left-hand "mock SPFx web part" in `App.tsx`: a slightly tilted fake browser window with a title bar and pulsing grey skeleton bars (a heading, text lines, a purple button and a 2×2 tile grid), representing the work without showing anything internal to the NHS. New CSS in `index.css` under `/* mock web part */` (`.sk` shimmer animation, `.mock-window` hover that straightens the tilt, reduced-motion override). **Worth understanding:** `animation-delay` with negative values to stagger the skeleton bars, and why decorative markup gets `aria-hidden="true"`.
+I was taught raw SVG basics (`viewBox`, `<circle>`, `<ellipse>`, `fill`/`stroke`), considered a Lottie animation (declined: new dependency and an external file), and then asked AI to build the globe directly because hand-placing the coordinates wasn't worth it. AI wrote the globe in `#right-hero`: a wireframe sphere, six "meridian" ellipses staggered with negative `animation-delay`s to fake 3D rotation, and five swaying dots, with CSS under `/* globe */` in `index.css`. As a continuation, AI added three orbiting chips (TS, C#, PY as text monograms, no new dependency) that counter-rotate so their labels stay upright, CSS under `/* orbiting language chips */`. **Worth understanding:** `rx` and `cx` can be CSS-animated directly; CSS custom properties (`--a`, `--b`) set per element and consumed in one shared `@keyframes`; the counter-rotation trick for the chips.
 
 ---
 
-## 2026-10-16 — Banner fix: ">_" color bug + layout gap
+## 2026-10-16 — Config: DaisyUI accent colour [AI-BUILT, config]
 
-**What happened:** User reported the ">_" prefix wasn't purple and the layout "looked weird." Root cause of the color bug: the banner's `.mono span { color: var(--accent) }` rule only applies to text inside an actual `<span>`, but ">_" was plain text in the `<p>`, not wrapped in one — fixed by wrapping it. For the "weird" layout, re-read it as: `justify-content: space-between` on a 1584px-wide row with a narrow text block and a 300px globe left a large dead gap in the middle, and the role-word list had lost its "Aiming at" context label when it was converted from the live cycling version to a static stacked list. AI tightened the layout (`space-between` → `center` with a fixed `96px` gap) and added the missing "Aiming at" label above the stack.
-
----
-
-## 2026-10-16 — Direct build: orbiting language chips (TS/C#/Python)
-
-**What happened:** Continuation of the globe build, same session. User asked for orbiting chips showing the languages they know, in the same breath as feedback on the accent color (no separate "just do it" needed, picked up as a continuation of the already-authorized globe work). AI added three chips (TypeScript, C#, Python, as text monograms rather than fetching real brand icons/logos, avoiding a new dependency or asset) that orbit around the globe and counter-rotate so their labels stay upright while circling — ported from the design mockup's same CSS-only pattern, no JS. New CSS in `index.css` under `/* orbiting language chips */`. **Worth understanding:** the counter-rotation trick — the outer `.orbit` wrapper spins the whole ring, each `.orbit-slot` is offset 0°/120°/240° around that ring, and the chip's inner `<span>` runs its own animation rotating the *opposite* direction at the same speed, which cancels out the parent's spin so the text itself never looks upside-down.
+I chose the site's purple as the one accent colour. DaisyUI's `btn-accent` rendered teal because DaisyUI's own `accent` token is unrelated to my `--accent` variable despite the shared name. AI added `--color-accent` and `--color-accent-content` to `:root` in `index.css`. **Known issue:** this override evidently does not win against DaisyUI's theme, so some DaisyUI accent components still render teal. Not yet fixed.
 
 ---
 
-## 2026-10-16 — Banner fix: "Aiming at" label sitting beside the word stack, not above it
+## 2026-10-16 — Citadel diagram [AI-BUILT, twice]
 
-**What happened:** User pointed out the banner's "Aiming at" label and word list were stacked vertically (label on its own line, words in a column below) instead of the label sitting beside the word column as a row. AI restructured `#role-stack` from `flex-direction: column` to `row`, grouping the four words + connectors into a new nested `.word-col` (its own column) so the label and that column sit side by side. Same disposable `banner/indeed-banner.html` asset as the earlier banner entries.
+For "01 Citadel" I agreed the animated request-flow diagram was too fiddly to hand-place and asked AI to build it. First version: ported from the mockup, with a travelling dot, flowing dashed lines and pulsing service boxes (`/* diagram */` in `index.css`).
+
+I then asked for it to be much smoother and interactive with no new dependencies. AI rebuilt it with rounded nodes, curved Bézier branches, native SVG `<animateMotion>` so one packet travels Internet → Authentik and then six packets split to the services, glow rings on arrival, and CSS-only hover (a hovered service lifts and lights its route while the others dim, using `:has()`). The services and hops are now two arrays rendered with `.map()`. **Worth understanding:** `.map()` with `key`, and `:has()`.
+
+---
+
+## 2026-10-17 — Citadel header, description row and badges [GUIDED row; AI-BUILT Badge]
+
+**I wrote** the header (label, title, flex row), the ghost "01" placement, and the three-column description row and its copy, guided on `flex-[grow_shrink_basis]` columns and `flex-wrap` stacking. DaisyUI `badge-outline` rendered nearly invisible (its colour comes from `--badge-color`, which a plain `badge` never sets), and `badge-accent` rendered teal. I asked AI to build the badges directly: a `Badge` component in `App.tsx` (`icon`, `className`, `children` props) with the pill styling and purple icon, used for the "Built with Claude…" badge and the Self-hosting / SSO / Linux tags. AI also corrected `font-[family:var(--header)]` to `font-[family-name:var(--header)]`. **Worth understanding:** a React component with typed props and `children`.
+
+---
+
+## 2026-10-17 — Section 02, NHS placement [mostly SOLO/GUIDED; AI-BUILT mock web part]
+
+**I wrote** the section's structure: the two-column flex row, the right-hand text column (label, title, description, "Internal work" note) and the badge row. AI added the ghost "02" (reusing `.ghost`), supplied the badge row snippet using my `Badge` component, and diagnosed why my title looked unstyled (Tailwind's preflight resets `h1`–`h6` to plain text).
+
+**AI-BUILT:** at my request, the left-hand "mock SPFx web part": a tilted fake browser window with a title bar and pulsing skeleton bars, so the work can be shown without exposing anything internal to the NHS. CSS under `/* mock web part */`. **Worth understanding:** negative `animation-delay` to stagger the bars; `aria-hidden` on decoration.
+
+---
+
+## 2026-10-17 — Section 03, "This site" [SOLO content; AI supplied ghost number and button]
+
+**I wrote** the centred column, label, title, paragraph and layer stack. AI added the ghost "03" and the centred container (reusing `.ghost`), and converted the mockup's raw HTML GitHub button to JSX in the site's DaisyUI style (`btn btn-dash`, the shared icon utilities, and a `group`/`group-hover:` arrow). AI briefly generated the whole element structure for the section; I asked for that to be undone and none of it remains. **Worth understanding:** Tailwind's `group`/`group-hover:`, and `class` → `className` when moving HTML into JSX.
+
+---
+
+## 2026-10-17 — Skills section: row label icons
+
+AI was unavoidable here. The four row icons (Languages, Frameworks, Tools, Learning now) come from the design document as raw SVG path data, which I can't write or derive by hand, so AI added them next to each label. The rest of the Skills section is my own work.
+
+---
+
+## 2026-10-16 — Indeed banner export (`banner/`, gitignored, not part of the site) [AI-BUILT]
+
+I wanted the hero as a static banner for my Indeed profile and asked for a file to screenshot plus ideally a `.psd`. AI explained a real `.psd` can't be generated by writing code and built `banner/indeed-banner.html` instead: static, 1584×396px (a guessed ratio, not a verified Indeed spec). It was revised several times at my request: orbiting chips as fixed circles, all four role words listed with connector lines, a `>_` colour bug (the text wasn't wrapped in a `<span>`, so the accent rule didn't apply), a layout gap (`space-between` → `center` with a fixed gap), and "Aiming at" placed beside the word list instead of above it. It's a disposable asset outside `src/`.

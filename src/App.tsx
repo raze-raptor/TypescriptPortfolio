@@ -14,12 +14,14 @@ const citadelServices = [
   { name: 'Transmission', sub: 'DOWNLOADS', title: 'Torrent client', x: 980 },
 ]
 
-function Badge({ icon, className = '', children }: { icon: string; className?: string; children: React.ReactNode }) {
+function Badge({ icon, className = '', children }: { icon?: string; className?: string; children: React.ReactNode }) {
   return (
     <span className={`badge h-8 px-3.5 gap-2 rounded-full border border-[#3A3F3C] bg-[#161918] text-[#ECEAE3] text-sm transition hover:-translate-y-0.5 hover:border-[var(--accent)] ${className}`}>
-      <svg viewBox="0 0 24 24" className="w-4 h-4 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round] text-[var(--accent)]">
-        <path d={icon} />
-      </svg>
+      {icon && (
+        <svg viewBox="0 0 24 24" className="w-4 h-4 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round] text-[var(--accent)]">
+          <path d={icon} />
+        </svg>
+      )}
       {children}
     </span>
   )
@@ -349,7 +351,67 @@ View Projects</button>
         </div>
       </section>
 
-      <section id="skills" className="bg-[#181B1A] py-28">{/* skills */}</section>
+      <section id="skills" className="bg-[#181B1A] border-y border-[#2B2F2D]">
+        <div className="max-w-[1240px] mx-auto px-10 pt-32 pb-28 flex flex-col gap-16">
+          {/* title: Skills (h2, same sizing as the other big titles) */}
+
+          <div className="flex flex-col">
+            <h2 className="text-[clamp(48px,6vw,88px)] text-[#ECEAE3] leading-[0.95] tracking-[-0.04em] font-bold font-[family-name:var(--header)]">Skills</h2>
+            {/* row 1: Languages (icon M16 18l6-6-6-6M8 6l-6 6 6 6) — TypeScript, Python, C# (MVC) */}
+            
+
+            <div className="flex flex-wrap text-[#CFCEC7] items-center gap-x-12 gap-y-4 py-8 border-t border-[#444A47]">
+              <h3 className="flex-[0_0_240px] flex items-center gap-3 text-[var(--accent)] font-[family-name:var(--jetbrains)] uppercase tracking-[.06em] text-sm"><svg viewBox="0 0 24 24" className="w-5 h-5 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round]"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6" /></svg>Languages</h3>  
+              <div className="flex-[1_1_400px] flex flex-wrap gap-3">       
+                <Badge>TypeScript</Badge>
+                <Badge>Python</Badge>
+                <Badge>C#</Badge>
+              </div>
+            </div>
+
+
+
+
+
+
+            {/* row 2: Frameworks (icon M12 2l10 5-10 5L2 7zM2 17l10 5 10-5M2 12l10 5 10-5) — React, Next.js, SPFx, Tailwind CSS, DaisyUI, Bootstrap */}
+                <div className="flex flex-wrap items-center gap-x-12 gap-y-4 py-8 border-t border-[#444A47]">
+                  <h3 className="flex-[0_0_240px] flex items-center gap-3 text-[var(--accent)] font-[family-name:var(--jetbrains)] uppercase tracking-[.06em] text-sm"><svg viewBox="0 0 24 24" className="w-5 h-5 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round]"><path d="M12 2l10 5-10 5L2 7zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>Frameworks</h3>
+                  <div className="flex-[1_1_400px] flex flex-wrap gap-3">
+                    <Badge>React</Badge>
+                    <Badge>Next.js</Badge>
+                    <Badge>SPFx</Badge>
+                    <Badge>Tailwind CSS</Badge>
+                    <Badge>DaisyUI</Badge>
+                    <Badge>Bootstrap</Badge>
+                  </div>
+                </div>
+            {/* row 3: Tools (icon M6 3v12M18 9a3 3 0 100-6 3 3 0 000 6zM6 21a3 3 0 100-6 3 3 0 000 6zM18 9a9 9 0 01-9 9) — Git, GitLab, GitHub, Vite */}
+            <div className="flex flex-wrap items-center gap-x-12 gap-y-4 py-8 border-t border-[#444A47]">
+              <h3 className="flex-[0_0_240px] flex items-center gap-3 text-[var(--accent)] font-[family-name:var(--jetbrains)] uppercase tracking-[.06em] text-sm"><svg viewBox="0 0 24 24" className="w-5 h-5 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round]"><path d="M6 3v12M18 9a3 3 0 100-6 3 3 0 000 6zM6 21a3 3 0 100-6 3 3 0 000 6zM18 9a9 9 0 01-9 9" /></svg>Tools</h3>
+              <div className="flex-[1_1_400px] flex flex-wrap gap-3">
+                <Badge>Git</Badge>
+                <Badge>GitLab</Badge>
+                <Badge>GitHub</Badge>
+                <Badge>Vite</Badge>
+              </div>
+            </div>
+
+            {/* row 4: Learning now (icon M13 2L3 14h9l-1 8 10-12h-9z) — C++, WinAPI, Kernel development, Linux */}
+            <div className="flex flex-wrap items-center gap-x-12 gap-y-4 py-8 border-t border-[#444A47]">
+              <h3 className="flex-[0_0_240px] flex items-center gap-3 text-[var(--accent)] font-[family-name:var(--jetbrains)] uppercase tracking-[.06em] text-sm"><svg viewBox="0 0 24 24" className="w-5 h-5 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round]"><path d="M13 2L3 14h9l-1 8 10-12h-9z" /></svg>Learning now</h3>
+              <div className="flex-[1_1_400px] flex flex-wrap gap-3">
+                <Badge>C++</Badge>
+                <Badge>WinAPI</Badge>
+                <Badge>Kernel development</Badge>
+                <Badge>Linux</Badge>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* outlined reverse ticker: C++ · WinAPI · Kernel · Linux (big outlined text, scrolls the other way) */}
+      </section>
       <section id="about" className="py-32">{/* about */}</section>
       <section id="contact" className="dots bg-[#181B1A] py-32">{/* contact */}</section>
     </main>
