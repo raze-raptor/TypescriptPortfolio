@@ -3,13 +3,19 @@ function App() {
     <main className="bg-[#121413] bg-[radial-gradient(#2B2F2D_1px,transparent_1px)] bg-[length:28px_28px]">
       <section id="hero" className="dots min-h-screen">
         {/* hero */}
-
-        <h1 id="hero-h" className="inline-block">
+        <div id="hero-content" className="flex flex-col gap-4 place-content-center place-items-center min-h-screen">
+        <h1 id="hero-name" className="text-[clamp(56px,7.4vw,108px)] leading-[0.94] tracking-[-0.04em] font-bold
+">
           Matthew<br></br>
           Matiyenga
         </h1>
+        <p className="max-w-[28em] text-[22px] leading-[1.45] text-[#CFCEC7] text-pretty">
+Software developer in training, learning to build things properly from the ground up.
+</p>
 
-        </section>
+
+        </div>
+      </section>
 
       <div className="bg-[#161918] border-y border-[#2B2F2D]">{/* ticker */}</div>
 
