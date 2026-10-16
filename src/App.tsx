@@ -174,7 +174,7 @@ View Projects</button>
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
                 <p className="text-[#A4A69F] font-[family-name:var(--jetbrains)] text-sm">SELECTED WORK</p>
-                <h3 className="text-[clamp(48px,6vw,88px)] leading-[0.95] tracking-[-0.04em] font-[family-name:var(--header)] font-bold">Citadel</h3>
+                <h3 className="text-[clamp(48px,6vw,88px)] leading-[0.95] tracking-[-0.04em] font-[family-name:var(--header)] font-bold" style={{color: '#eceae3'}}>Citadel</h3>
               </div>
               <div className="ghost font-[family-name:var(--header)] text-[240px]">01</div>
             </div>
@@ -260,7 +260,54 @@ View Projects</button>
       
 
         </div>
-        <div className="bg-[#181B1A] py-32">{/* 02 Placement */}</div>
+        <div className="relative overflow-hidden bg-[#181B1A] border-y border-[#2B2F2D] py-32">
+          <div className="ghost absolute -right-5 top-5 text-[360px] opacity-70 font-[family-name:var(--header)]" aria-hidden="true">02</div>
+          {/* 02 Placement */}
+
+          <div className="relative max-w-[1240px] mx-auto px-10 py-... flex flex-wrap items-center gap-18">
+            <div className="flex-[6_1_460px] min-w-0">
+              <div className="mock-window -rotate-[2.5deg] border border-[#3A3F3C] bg-[#0D0F0E] rounded-xl overflow-hidden" aria-hidden="true">
+                <div className="h-10 flex items-center gap-2 px-4 border-b border-[#2B2F2D]">
+                  <i className="w-2.5 h-2.5 rounded-full bg-[#444A47]"></i>
+                  <i className="w-2.5 h-2.5 rounded-full bg-[#444A47]"></i>
+                  <i className="w-2.5 h-2.5 rounded-full bg-[var(--accent)]"></i>
+                  <span className="ml-3 text-[11px] uppercase tracking-[.06em] text-[#A4A69F] font-[family-name:var(--jetbrains)]">SPFx web part</span>
+                </div>
+                <div className="p-7 grid grid-cols-[repeat(auto-fit,minmax(min(220px,100%),1fr))] gap-6">
+                  <div className="flex flex-col gap-3">
+                    <div className="sk h-[18px] w-[55%] rounded-md"></div>
+                    <div className="sk h-2.5 w-full rounded-md" style={{ animationDelay: '-.3s' }}></div>
+                    <div className="sk h-2.5 w-[92%] rounded-md" style={{ animationDelay: '-.6s' }}></div>
+                    <div className="sk h-2.5 w-[70%] rounded-md" style={{ animationDelay: '-.9s' }}></div>
+                    <div className="mt-2.5 h-10 w-30 rounded-lg bg-[var(--accent)] opacity-85"></div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="sk h-[84px] rounded-lg"></div>
+                    <div className="sk h-[84px] rounded-lg" style={{ animationDelay: '-.5s' }}></div>
+                    <div className="sk h-[84px] rounded-lg" style={{ animationDelay: '-1s' }}></div>
+                    <div className="sk h-[84px] rounded-lg" style={{ animationDelay: '-1.5s' }}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              {/* so ic an see the seperation */}
+            <div className="flex-[5_1_340px] min-w-0"> 
+
+              <p className="leading-[1.45] text-[#CFCEC7] font-[family-name:var(--jetbrains)] text-pretty">PLACEMENT <span><i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i></span> ONGOING</p>
+              <h2 className="text-[56px] leading-none tracking-[-0.03em] font-bold font-[family-name:var(--header)]" style={{color: '#eceae3'}}>Barnsley Hospital NHS</h2>
+              <p className="max-w-[28em] text-[22px] leading-[1.45] text-[#CFCEC7] text-pretty mt-5">Junior Applications Developer with the ICT Applications Development team. I work on SharePoint Framework web parts in TypeScript and React, and use GitLab day to day.</p>
+              <div className="flex flex-wrap gap-2.5 mt-3">
+                <Badge icon="M16 18l6-6-6-6M8 6l-6 6 6 6">SPFx</Badge>
+                <Badge icon="M16 18l6-6-6-6M8 6l-6 6 6 6">TypeScript</Badge>
+                <Badge icon="M12 2l10 5-10 5L2 7zM2 17l10 5 10-5M2 12l10 5 10-5">React</Badge>
+                <Badge icon="M6 3v12M18 9a3 3 0 100-6 3 3 0 000 6zM6 21a3 3 0 100-6 3 3 0 000 6zM18 9a9 9 0 01-9 9">GitLab</Badge>
+              </div>
+              <p className="text-[#CFCEC7] font-[family-name:var(--jetbrains)] text-pretty mt-8 absolute" style={{opacity: 0.05}}>Internal work, so no public repo or demo.</p>
+
+            </div>
+          </div>
+
+        </div>
         <div className="dots py-32">{/* 03 This site */}</div>
       </section>
 

@@ -78,6 +78,12 @@ This file tracks moments where AI assistance (Claude) contributed to a **major**
 
 ---
 
+## 2026-10-17 — Section 02 (NHS placement): mostly user-written, AI built the mock web part
+
+**What happened:** User wrote the section's structure and content themselves: the two-column flex row, the right-hand text column (label, title, description, "Internal work" note) and the badge row. AI added the ghost "02" (reusing `.ghost`), supplied the badge row snippet using the existing `Badge` component, and diagnosed why the title looked unstyled (Tailwind's preflight resets `h1`–`h6` to plain text, so headings need explicit classes). When the user asked for it, AI built the left-hand "mock SPFx web part" in `App.tsx`: a slightly tilted fake browser window with a title bar and pulsing grey skeleton bars (a heading, text lines, a purple button and a 2×2 tile grid), representing the work without showing anything internal to the NHS. New CSS in `index.css` under `/* mock web part */` (`.sk` shimmer animation, `.mock-window` hover that straightens the tilt, reduced-motion override). **Worth understanding:** `animation-delay` with negative values to stagger the skeleton bars, and why decorative markup gets `aria-hidden="true"`.
+
+---
+
 ## 2026-10-16 — Banner fix: ">_" color bug + layout gap
 
 **What happened:** User reported the ">_" prefix wasn't purple and the layout "looked weird." Root cause of the color bug: the banner's `.mono span { color: var(--accent) }` rule only applies to text inside an actual `<span>`, but ">_" was plain text in the `<p>`, not wrapped in one — fixed by wrapping it. For the "weird" layout, re-read it as: `justify-content: space-between` on a 1584px-wide row with a narrow text block and a 300px globe left a large dead gap in the middle, and the role-word list had lost its "Aiming at" context label when it was converted from the live cycling version to a static stacked list. AI tightened the layout (`space-between` → `center` with a fixed `96px` gap) and added the missing "Aiming at" label above the stack.

@@ -173,6 +173,25 @@ html {
   user-select: none;
 }
 
+/* mock web part */
+
+.sk {
+  background: #262A28;
+  animation: skShimmer 2.2s ease-in-out infinite alternate;
+}
+@keyframes skShimmer {
+  from { opacity: .35; }
+  to { opacity: 1; }
+}
+
+.mock-window { transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.mock-window:hover { transform: rotate(0deg) translateY(-6px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sk { animation: none; }
+  .mock-window { transition: none; }
+}
+
 /* diagram */
 
 .diagram path { fill: none; }
