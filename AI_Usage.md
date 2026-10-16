@@ -21,3 +21,15 @@ This file tracks moments where AI assistance (Claude) contributed to a **major**
 ## 2026-10-16 — Working agreement: AI must not edit code unless explicitly asked
 
 **What happened:** User set a standing project-wide rule: Claude must not edit any code unless explicitly told to, going forward. This supersedes any earlier back-and-forth in this session where AI made direct edits (scaffold cleanup, Tailwind wiring) — those were done before the rule was stated and are logged above for transparency, but are not the pattern going forward. From this point on, AI gives guidance/explanation only; the user writes the implementation.
+
+---
+
+## 2026-10-16 — Hero section: two-column layout restructure
+
+**What it helped with:** Guided (no direct edits) restructuring the hero from a single centered column to a two-column flex layout matching a design mockup — explaining `flex`/`flex-wrap`/`flex-1`/`items-center` and why centering must sit on the element that actually has height (`#hero`, not `#hero-content`); why `w-full` was needed before `max-w` + `mx-auto` could center the row; why an inline SVG icon rendered above text instead of beside it (Tailwind preflight sets `svg { display: block }`, fixed by making the parent a flex row); and how to load/apply a Google Font via `index.css`. User wrote all the JSX/CSS changes themselves. Pointed at docs for the CSS keyframe/stagger-delay technique behind the cycling role text, left for the user to implement.
+
+---
+
+## 2026-10-16 — Direct edit: cycling-role-text layout bug (user said "just fix it")
+
+**What happened:** User built the `@keyframes roleCycle` animation and `.role-word`/`nth-child` stagger themselves and it worked, but the "AIMING AT [cycling word]" line was still misaligned (wrapping below the heading text instead of sitting inline). User explicitly asked AI to fix it directly rather than keep debugging it step by step. AI edited `App.tsx`: wrapped "AIMING AT" in its own `<span>` (previously a bare text node mixed with a flex child, ambiguous for layout) and gave the absolutely-positioned word stack an explicit `h-[1.4em]` (it was collapsing to zero height since all its children were `position: absolute`, taken out of normal flow). **Worth understanding:** why an element containing only absolutely-positioned children has no height of its own, and why mixing raw text with flex children in JSX can behave unpredictably — give it its own element instead.

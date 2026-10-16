@@ -5,20 +5,29 @@ function App() {
         {/* hero */}
         <div id="hero-content" className="flex flex-wrap max-w-[1240px] w-full mx-auto px-10 py-24">
           <div id="left-hero" className="flex-1 min-w-0">
-            <p className="flex items-center gap-2"><svg
+            <p className="flex items-center gap-2 font-[family-name:var(--jetbrains)]"><svg
   viewBox="0 0 24 24"
   className="w-5 h-5 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round]"
   style={{ color: '#5fd8e6' }}
 >
   <path d="M4 17l6-6-6-6M12 19h8" />
 </svg>
-South Yorkshire</p>
+South Yorkshire, England</p>
             <h1 id="hero-name" className="text-[clamp(56px,7.4vw,108px)] leading-[0.94] tracking-[-0.04em] font-bold">Matthew<br/>Matiyenga</h1>
 
-            <p id="meDescription" className="max-w-[28em] text-[22px] leading-[1.45] text-[#CFCEC7] text-pretty">
+            <p id="meDescription" className="max-w-[28em] text-[22px] leading-[1.45] text-[#CFCEC7] text-pretty mt-5">
     Software developer in training, learning to build things properly from the ground up.
     </p>
 
+<p className="flex items-center gap-2 font-[family-name:var(--jetbrains)] mt-2.5">
+  <span>AIMING AT</span>
+  <span className="relative inline-block w-[9.5ch] h-[1.4em]">
+    <span className="absolute top-0 left-0 role-word">BACKEND</span>
+    <span className="absolute top-0 left-0 role-word">SYSTEMS</span>
+    <span className="absolute top-0 left-0 role-word">SECURITY</span>
+    <span className="absolute top-0 left-0 role-word">FRONTEND</span>
+  </span>
+</p>
             </div>
             <div id="right-hero" className="flex-1">
               {/* where the globe will be */}

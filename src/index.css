@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=...');
+
 
 :root {
   --text: #6b6375;
@@ -16,6 +18,7 @@
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+  --jetbrains: 'JetBrains Mono', ui-monospace, Consolas, monospace;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -70,3 +73,25 @@
 #meDescription {
   color: #cfcec7;
 }
+
+
+
+/* anims */
+
+@keyframes roleCycle {
+  0% {opacity: 0;}
+  5% {opacity: 1;}
+  20% {opacity: 1;}
+  25% {opacity: 0;}
+  100% {opacity: 0;}
+}
+
+.role-word {
+  animation: roleCycle 12s infinite;
+  animation-fill-mode: backwards;
+}
+
+.role-word:nth-child(1) { animation-delay: 0s; }
+.role-word:nth-child(2) { animation-delay: 3s; }
+.role-word:nth-child(3) { animation-delay: 6s; }
+.role-word:nth-child(4) { animation-delay: 9s; }
