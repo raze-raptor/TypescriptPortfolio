@@ -14,6 +14,17 @@ const citadelServices = [
   { name: 'Transmission', sub: 'DOWNLOADS', title: 'Torrent client', x: 980 },
 ]
 
+function Badge({ icon, className = '', children }: { icon: string; className?: string; children: React.ReactNode }) {
+  return (
+    <span className={`badge h-8 px-3.5 gap-2 rounded-full border border-[#3A3F3C] bg-[#161918] text-[#ECEAE3] text-sm transition hover:-translate-y-0.5 hover:border-[var(--accent)] ${className}`}>
+      <svg viewBox="0 0 24 24" className="w-4 h-4 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round] text-[var(--accent)]">
+        <path d={icon} />
+      </svg>
+      {children}
+    </span>
+  )
+}
+
 function App() {
   return (
     <main className="bg-[#121413] bg-[radial-gradient(#2B2F2D_1px,transparent_1px)] bg-[length:28px_28px]">
@@ -222,9 +233,31 @@ View Projects</button>
                 <text className="caption" x="1070" y="318" textAnchor="end">HOVER A SERVICE</text>
               </svg>
             </div>
+
+            <div className="flex flex-wrap gap-x-16 gap-y-10 items-start font-[family-name:var(--header)]">
+              <p className="flex-[5_1_360px] min-w-0 text-[19px] text-pretty text-[#CFCEC7]">
+                My home server: a second-hand IBM x3650 in my bedroom. Every service sits behind a Cloudflare Tunnel and single sign-on, so nothing is exposed directly.
+              </p>
+
+              <div className="flex-[4_1_320px] min-w-0 flex flex-col gap-3.5">
+                <Badge icon="M13 2L3 14h9l-1 8 10-12h-9z" className="self-start h-auto py-1.5 whitespace-normal text-left">
+                  Built with Claude and locally run models as my sysadmin
+                </Badge>
+                <p className="text-base text-pretty text-[#A4A69F]">
+                  I'm learning Linux by reading what it did and why. I run the AI side myself with LM Studio and llama.cpp. I self-host because I believe the internet should stay free and open, the way it was before I was born, and running my own stack is how I put that into practice.
+                </p>
+              </div>
+
+              <div className="flex-[3_1_220px] min-w-0 flex flex-wrap gap-2.5">
+                <Badge icon="M2 4h20v6H2zM2 14h20v6H2zM6 7h.01M6 17h.01">Self-hosting</Badge>
+                <Badge icon="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z">SSO</Badge>
+                <Badge icon="M4 17l6-6-6-6M12 19h8">Linux</Badge>
+              </div>
+            </div>
+
           </div>
 
-
+      
 
         </div>
         <div className="bg-[#181B1A] py-32">{/* 02 Placement */}</div>

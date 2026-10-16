@@ -72,6 +72,12 @@ This file tracks moments where AI assistance (Claude) contributed to a **major**
 
 ---
 
+## 2026-10-17 — Citadel description row + badges (guided, then direct build)
+
+**What happened:** User wrote the three-column description row under the diagram with guidance (flex row, `flex-[grow_shrink_basis]` columns, `flex-wrap` stacking). DaisyUI `badge badge-outline` rendered nearly invisible: `badge-outline` takes its colour from `--badge-color`, which a plain `badge` never sets, so it fell back to the dim body text colour. `badge-accent` then rendered teal, because DaisyUI's accent token is not picking up the `--color-accent` override in `index.css` (not yet fixed; the "View Projects" button likely has the same problem). User asked for the badges to match the mockup's neutral dark pill and said the markup was getting messy, so AI built them directly: a `Badge` component in `App.tsx` (`icon`, `className`, `children` props) holding the pill styling and purple icon once, used for the "Built with Claude…" badge and the Self-hosting / SSO / Linux tags. Also corrected `font-[family:var(--header)]` to `font-[family-name:var(--header)]`. **Worth understanding:** a React component with typed props and `children`, and why DaisyUI colour classes depend on CSS variables the variant classes set.
+
+---
+
 ## 2026-10-16 — Banner fix: ">_" color bug + layout gap
 
 **What happened:** User reported the ">_" prefix wasn't purple and the layout "looked weird." Root cause of the color bug: the banner's `.mono span { color: var(--accent) }` rule only applies to text inside an actual `<span>`, but ">_" was plain text in the `<p>`, not wrapped in one — fixed by wrapping it. For the "weird" layout, re-read it as: `justify-content: space-between` on a 1584px-wide row with a narrow text block and a 300px globe left a large dead gap in the middle, and the role-word list had lost its "Aiming at" context label when it was converted from the live cycling version to a static stacked list. AI tightened the layout (`space-between` → `center` with a fixed `96px` gap) and added the missing "Aiming at" label above the stack.
