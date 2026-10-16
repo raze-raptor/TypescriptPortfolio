@@ -293,7 +293,7 @@ View Projects</button>
               {/* so ic an see the seperation */}
             <div className="flex-[5_1_340px] min-w-0"> 
 
-              <p className="leading-[1.45] text-[#CFCEC7] font-[family-name:var(--jetbrains)] text-pretty">PLACEMENT <span><i className="w-[7px] h-[7px] bg-[var(--accent)] rotate-45"></i></span> ONGOING</p>
+              <p className="leading-[1.45] text-[#CFCEC7] font-[family-name:var(--jetbrains)] text-pretty">PLACEMENT · ONGOING</p>
               <h2 className="text-[56px] leading-none tracking-[-0.03em] font-bold font-[family-name:var(--header)]" style={{color: '#eceae3'}}>Barnsley Hospital NHS</h2>
               <p className="max-w-[28em] text-[22px] leading-[1.45] text-[#CFCEC7] text-pretty mt-5">Junior Applications Developer with the ICT Applications Development team. I work on SharePoint Framework web parts in TypeScript and React, and use GitLab day to day.</p>
               <div className="flex flex-wrap gap-2.5 mt-3">
@@ -308,7 +308,45 @@ View Projects</button>
           </div>
 
         </div>
-        <div className="dots py-32">{/* 03 This site */}</div>
+        <div className="dots relative py-32">
+          <div className="max-w-[1000px] mx-auto px-10 flex flex-col items-center text-center gap-7">
+            <div className="ghost text-[200px] font-[family-name:var(--header)]" aria-hidden="true">03</div>
+
+            {/* label: First project · In progress */}
+            <div className="flex items-center gap-2.5 ">
+              <p className="text-[#CFCEC7] font-[family-name:var(--jetbrains)] text-pretty" style={{ color: 'var(--accent)' }}> <svg viewBox="0 0 24 24" className="w-5 h-5  mr-2 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round] inline-block" style={{ color: 'var(--accent)' }}>
+    <path d="M12 2l10 5-10 5L2 7zM2 17l10 5 10-5M2 12l10 5 10-5" />
+  </svg>FIRST PROJECT · IN PROGRESS</p>
+            </div>
+
+            {/* title: This site */}
+            <h3 className="text-[clamp(48px,6vw,88px)] leading-[0.95] tracking-[-0.04em] font-[family-name:var(--header)] font-bold" style={{color: '#eceae3'}}>This site</h3>
+
+            {/* paragraph */}
+            <p className="text-[#CFCEC7] text-pretty" style={{margin: 0, maxWidth: '30em', color: '#CFCEC7', fontSize: '19px', textWrap: 'pretty'}}>Rebuilt from scratch in React and TypeScript. It's my first proper project, and I'm learning the tooling by building it.</p>
+
+            {/* layer stack: DaisyUI, Tailwind CSS, React + TypeScript, Vite */}
+            <div className="flex flex-wrap gap-2.5 mt-3">
+              <Badge icon="M2 4h20v6H2zM2 14h20v6H2zM6 7h.01M6 17h.01">DaisyUI</Badge>
+              <Badge icon="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z">Tailwind CSS</Badge>
+              <Badge icon="M16 18l6-6-6-6M8 6l-6 6 6 6">React + TypeScript</Badge>
+              <Badge icon="M12 2l10 5-10 5L2 7zM2 17l10 5 10-5M2 12l10 5 10-5">Vite</Badge>
+            </div>
+            {/* GitHub button */}
+            <div className="flex flex-wrap justify-center gap-3 pt-4">
+              <a className="btn btn-dash group" href="https://github.com/raze-raptor/TypescriptPortfolio">
+                <svg viewBox="0 0 24 24" className="w-5 h-5 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round]">
+                  <path d="M6 3v12M18 9a3 3 0 100-6 3 3 0 000 6zM6 21a3 3 0 100-6 3 3 0 000 6zM18 9a9 9 0 01-9 9" />
+                </svg>
+                GitHub
+                <svg viewBox="0 0 24 24" className="w-5 h-5 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round] transition-transform group-hover:translate-x-[3px] group-hover:-translate-y-[3px]">
+                  <path d="M7 17L17 7M7 7h10v10" />
+                </svg>
+              </a>
+            </div>
+
+          </div>
+        </div>
       </section>
 
       <section id="skills" className="bg-[#181B1A] py-28">{/* skills */}</section>
