@@ -1,21 +1,26 @@
 function App() {
   return (
     <main className="bg-[#121413] bg-[radial-gradient(#2B2F2D_1px,transparent_1px)] bg-[length:28px_28px]">
-      <section id="hero" className="dots min-h-screen">
+      <section id="hero" className="flex items-center dots min-h-screen">
         {/* hero */}
-        <div id="hero-content" className="flex flex-wrap max-w-[1240px] mx-auto px-10 py-24">
-          <div id="left-hero">
-            <h1 id="hero-name" className="text-[clamp(56px,7.4vw,108px)] leading-[0.94] tracking-[-0.04em] font-bold
-    ">
-              Matthew<br></br>
-              Matiyenga
-            </h1>
-            <p id="meDescription"className="max-w-[28em] text-[22px] leading-[1.45] text-[#CFCEC7] text-pretty">
+        <div id="hero-content" className="flex flex-wrap max-w-[1240px] w-full mx-auto px-10 py-24">
+          <div id="left-hero" className="flex-1 min-w-0">
+            <p className="flex items-center gap-2"><svg
+  viewBox="0 0 24 24"
+  className="w-5 h-5 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round]"
+  style={{ color: '#5fd8e6' }}
+>
+  <path d="M4 17l6-6-6-6M12 19h8" />
+</svg>
+South Yorkshire</p>
+            <h1 id="hero-name" className="text-[clamp(56px,7.4vw,108px)] leading-[0.94] tracking-[-0.04em] font-bold">Matthew<br/>Matiyenga</h1>
+
+            <p id="meDescription" className="max-w-[28em] text-[22px] leading-[1.45] text-[#CFCEC7] text-pretty">
     Software developer in training, learning to build things properly from the ground up.
     </p>
 
             </div>
-            <div id="right-hero">
+            <div id="right-hero" className="flex-1">
               {/* where the globe will be */}
             </div>
         </div>
