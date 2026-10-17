@@ -35,9 +35,9 @@ body {
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: light dark;
+  color-scheme: dark;
   color: var(--text);
-  background: var(--bg);
+  background: #121413;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -81,6 +81,9 @@ body {
   font-weight: 700;
   animation-delay: .1s;
   color: #eceae3;
+}
+@media (max-width: 400px) {
+  #hero-name { font-size: 14vw; }
 }
 
 #meDescription {
@@ -268,7 +271,8 @@ body {
   transform-box: fill-box;
   transition: transform .35s cubic-bezier(.2,.7,.2,1);
 }
-.diagram .node:hover { transform: translateY(-3px); }
+.diagram .node:hover,
+.diagram .svc:focus .node { transform: translateY(-3px); }
 
 .diagram .node-box {
   fill: #141716;
@@ -276,7 +280,8 @@ body {
   transition: stroke .3s, fill .3s;
 }
 .diagram .node-box.hub { stroke: var(--accent); }
-.diagram .node:hover .node-box {
+.diagram .node:hover .node-box,
+.diagram .svc:focus .node-box {
   stroke: var(--accent);
   fill: color-mix(in srgb, var(--accent) 10%, #141716);
 }
@@ -320,11 +325,20 @@ body {
   75%, 100% { opacity: 0; }
 }
 
-.diagram .svc { cursor: default; transition: opacity .3s; }
+.diagram .svc { cursor: default; transition: opacity .3s; outline: none; }
 .diagram .svc-route { stroke: #3A3F3C; transition: stroke .3s; }
 .diagram .svc:hover .svc-route,
+.diagram .svc:focus .svc-route,
 .diagram:has(.hub-node:hover) .svc-route { stroke: var(--accent); }
-.diagram:has(.svc:hover) .svc:not(:hover) { opacity: .3; }
+.diagram:has(.svc:hover) .svc:not(:hover),
+.diagram:has(.svc:focus) .svc:not(:focus) { opacity: .3; }
+
+/* touch screens can't hover: hide the hint, tapping a service focuses it instead */
+.diagram .hint-touch { display: none; }
+@media (hover: none) {
+  .diagram .hint-hover { display: none; }
+  .diagram .hint-touch { display: inline; }
+}
 
 .diagram-packet {
   fill: var(--accent);

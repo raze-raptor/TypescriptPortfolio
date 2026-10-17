@@ -14,6 +14,8 @@ const citadelServices = [
   { name: 'Transmission', sub: 'DOWNLOADS', title: 'Torrent client', x: 980 },
 ]
 
+const citadelLabel = 'Animated diagram: a request travels from the internet through Cloudflare Tunnel and Nginx Proxy Manager to Authentik single sign-on, then out to self-hosted services: Nextcloud, Navidrome, Vaultwarden, Grafana, Pi-hole and Transmission'
+
 const timeline = [
   { when: 'Next · September 2027', title: 'Degree apprenticeship', desc: 'After Barnsley College.', icon: 'M22 10L12 5 2 10l10 5zM6 12v5c3 2 9 2 12 0v-5', active: false, ping: false },
   { when: 'Now · Until December 2026', title: 'Junior Applications Developer, placement', desc: 'ICT Applications Development, Barnsley Hospital NHS Foundation Trust.', icon: 'M2 7h20v14H2zM16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16', active: true, ping: true },
@@ -37,9 +39,9 @@ function App() {
   return (
     <>
     <main className="bg-[#121413] bg-[radial-gradient(#2B2F2D_1px,transparent_1px)] bg-[length:28px_28px]">
-      <section id="hero" className="relative flex items-center dots min-h-screen">
+      <section id="hero" className="relative flex items-center dots min-h-svh">
         {/* hero */}
-        <div id="hero-content" className="flex flex-wrap max-w-[1240px] w-full mx-auto px-10 py-24">
+        <div id="hero-content" className="flex flex-wrap max-w-[1240px] w-full mx-auto px-5 sm:px-10 py-24">
           <div id="left-hero" className="flex-[1_1_340px] min-w-0">
             <p className="flex items-center gap-2 font-[family-name:var(--jetbrains)]"><svg
   viewBox="0 0 24 24"
@@ -51,7 +53,7 @@ function App() {
 South Yorkshire, England</p>
             <h1 id="hero-name" className="text-[clamp(56px,7.4vw,108px)] leading-[0.94] tracking-[-0.04em] font-[family-name:var(--header)] font-bold">Matthew<br/>Matiyenga</h1>
 
-            <p id="meDescription" className="max-w-[28em] text-[22px] leading-[1.45] text-[#CFCEC7] text-pretty mt-5">
+            <p id="meDescription" className="max-w-[28em] text-lg sm:text-[22px] leading-[1.45] text-[#CFCEC7] text-pretty mt-5">
     Software developer in training, learning to build things properly from the ground up.
     </p>
 
@@ -64,7 +66,7 @@ South Yorkshire, England</p>
     <span className="absolute top-0 left-0 role-word drop-shadow-[0px_0px_14px_rgba(170,59,255,0.4)]">FRONTEND</span>
   </span>
 </p>
-  <div className="flex gap-4 mt-8">
+  <div className="flex flex-wrap gap-4 mt-8">
     <button className="btn btn-soft btn-accent"><svg viewBox="0 0 24 24" className="w-5 h-5 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round]">
   <path d="M12 2l10 5-10 5L2 7zM2 17l10 5 10-5M2 12l10 5 10-5" />
 </svg>
@@ -74,7 +76,7 @@ View Projects</button>
 {/* SPINNING GLOBE */}
             </div>
             <div id="right-hero" className="flex-[1_1_340px] min-w-0">
-              <div className="relative w-full max-w-[480px] mx-auto aspect-square">
+              <div className="relative w-[calc(100%-56px)] max-w-[480px] mx-auto aspect-square">
                 <div className="orbit" aria-hidden="true">
                   <div className="orbit-slot"><div className="orbit-chip"><span>TS</span></div></div>
                   <div className="orbit-slot b"><div className="orbit-chip"><span>C#</span></div></div>
@@ -175,25 +177,25 @@ View Projects</button>
         </div>
 
       <section id="projects">
-        <div className="dots py-32 ">
+        <div className="dots py-20 sm:py-32 ">
           
           
 
-          <div className="max-w-[1240px] w-full mx-auto px-10 flex flex-col gap-14">
+          <div className="max-w-[1240px] w-full mx-auto px-5 sm:px-10 flex flex-col gap-14">
             <div className="flex flex-wrap items-end justify-between gap-6">
               <div>
                 <p className="text-[#A4A69F] font-[family-name:var(--jetbrains)] text-sm">SELECTED WORK</p>
-                <h3 className="text-[clamp(48px,6vw,88px)] leading-[0.95] tracking-[-0.04em] font-[family-name:var(--header)] font-bold" style={{color: '#eceae3'}}>Citadel</h3>
+                <h3 className="text-[clamp(40px,6vw,88px)] leading-[0.95] tracking-[-0.04em] font-[family-name:var(--header)] font-bold" style={{color: '#eceae3'}}>Citadel</h3>
               </div>
-              <div className="ghost font-[family-name:var(--header)] text-[240px]">01</div>
+              <div className="ghost font-[family-name:var(--header)] text-[clamp(120px,22vw,240px)]">01</div>
             </div>
 
-            <div className="rounded-2xl border border-[#2B2F2D] bg-[#0D0F0E] bg-[radial-gradient(ellipse_at_85%_0%,color-mix(in_srgb,var(--accent)_12%,transparent),transparent_55%)] overflow-x-auto">
+            <div className="rounded-2xl border border-[#2B2F2D] bg-[#0D0F0E] bg-[radial-gradient(ellipse_at_85%_0%,color-mix(in_srgb,var(--accent)_12%,transparent),transparent_55%)] overflow-hidden">
               <svg
                 viewBox="0 0 1100 340"
                 role="img"
-                aria-label="Animated diagram: a request travels from the internet through Cloudflare Tunnel and Nginx Proxy Manager to Authentik single sign-on, then out to self-hosted services: Nextcloud, Navidrome, Vaultwarden, Grafana, Pi-hole and Transmission"
-                className="diagram block w-full min-w-[760px] h-auto"
+                aria-label={citadelLabel}
+                className="diagram hidden lg:block w-full h-auto"
               >
                 <defs>
                   <linearGradient id="citadel-line" gradientUnits="userSpaceOnUse" x1="190" y1="0" x2="870" y2="0">
@@ -207,7 +209,7 @@ View Projects</button>
                 {citadelServices.map((s) => {
                   const route = `M975 100C975 155 ${s.x} 150 ${s.x} 206`
                   return (
-                    <g key={s.name} className="svc">
+                    <g key={s.name} className="svc" tabIndex={0}>
                       <title>{`${s.name}: ${s.title}`}</title>
                       <path className="svc-route diagram-flow" d={route} strokeWidth="1.5" />
                       <g className="node">
@@ -239,7 +241,63 @@ View Projects</button>
                 </circle>
 
                 <text className="caption" x="30" y="318">20+ CONTAINERS, ONE LOGIN</text>
-                <text className="caption" x="1070" y="318" textAnchor="end">HOVER A SERVICE</text>
+                <text className="caption hint-hover" x="1070" y="318" textAnchor="end">HOVER A SERVICE</text>
+              </svg>
+
+              {/* phones and tablets: same diagram stacked vertically, services in a 2-column grid off one trunk */}
+              <svg viewBox="0 0 360 680" role="img" aria-label={citadelLabel} className="diagram block lg:hidden w-full max-w-[420px] mx-auto h-auto">
+                <defs>
+                  <linearGradient id="citadel-line-v" gradientUnits="userSpaceOnUse" x1="0" y1="76" x2="0" y2="272">
+                    <stop offset="0" stopColor="#3A3F3C" />
+                    <stop offset="1" style={{ stopColor: 'var(--accent)' }} />
+                  </linearGradient>
+                </defs>
+
+                <path className="diagram-flow" d="M180 76V104M180 160V188M180 244V272" stroke="url(#citadel-line-v)" strokeWidth="1.5" />
+
+                {citadelServices.map((s, i) => {
+                  const left = i % 2 === 0
+                  const cx = left ? 92 : 268
+                  const y = 400 + Math.floor(i / 2) * 76
+                  const route = `M180 328V${y + 28}H${left ? 168 : 192}`
+                  return (
+                    <g key={s.name} className="svc" tabIndex={0}>
+                      <title>{`${s.name}: ${s.title}`}</title>
+                      <path className="svc-route diagram-flow" d={route} strokeWidth="1.5" />
+                      <g className="node">
+                        <rect className="node-box" x={cx - 76} y={y} width="152" height="56" rx="14" />
+                        <rect className="node-glow" x={cx - 76} y={y} width="152" height="56" rx="14" />
+                        <text className="node-label" x={cx} y={y + 25} textAnchor="middle">{s.name}</text>
+                        <text className="node-sub" x={cx} y={y + 44} textAnchor="middle">{s.sub}</text>
+                      </g>
+                      <circle r="4" className="diagram-packet" opacity="0">
+                        <animateMotion dur="4s" repeatCount="indefinite" path={route} keyPoints="0;0;1;1" keyTimes="0;0.5;0.8;1" calcMode="spline" keySplines="0 0 1 1;0.45 0 0.25 1;0 0 1 1" />
+                        <animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.5;0.53;0.78;0.82;1" />
+                      </circle>
+                    </g>
+                  )
+                })}
+
+                {citadelHops.map((h, i) => {
+                  const y = 20 + i * 84
+                  return (
+                    <g key={h.name} className={h.hub ? 'node hub-node' : 'node'}>
+                      <rect className={h.hub ? 'node-box hub' : 'node-box'} x="60" y={y} width="240" height="56" rx="16" />
+                      {h.hub && <rect className="node-glow hub" x="60" y={y} width="240" height="56" rx="16" />}
+                      <text className="node-label" x="180" y={y + 26} textAnchor="middle">{h.name}</text>
+                      <text className="node-sub" x="180" y={y + 45} textAnchor="middle">{h.sub}</text>
+                    </g>
+                  )
+                })}
+
+                <circle r="5" className="diagram-packet" opacity="0">
+                  <animateMotion dur="4s" repeatCount="indefinite" path="M180 48V300" keyPoints="0;1;1" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.45 0 0.25 1;0 0 1 1" />
+                  <animate attributeName="opacity" dur="4s" repeatCount="indefinite" values="0;1;1;0;0" keyTimes="0;0.05;0.48;0.52;1" />
+                </circle>
+
+                <text className="caption" x="180" y="640" textAnchor="middle">20+ CONTAINERS, ONE LOGIN</text>
+                <text className="caption hint-hover" x="180" y="662" textAnchor="middle">HOVER A SERVICE</text>
+                <text className="caption hint-touch" x="180" y="662" textAnchor="middle">TAP A SERVICE</text>
               </svg>
             </div>
 
@@ -269,11 +327,11 @@ View Projects</button>
       
 
         </div>
-        <div className="relative overflow-hidden bg-[#181B1A] border-y border-[#2B2F2D] py-32">
-          <div className="ghost absolute -right-5 top-5 text-[360px] opacity-70 font-[family-name:var(--header)]" aria-hidden="true">02</div>
+        <div className="relative overflow-hidden bg-[#181B1A] border-y border-[#2B2F2D] py-20 sm:py-32">
+          <div className="ghost absolute -right-5 top-5 text-[clamp(180px,30vw,360px)] opacity-70 font-[family-name:var(--header)]" aria-hidden="true">02</div>
           {/* 02 Placement */}
 
-          <div className="relative max-w-[1240px] mx-auto px-10 py-... flex flex-wrap items-center gap-18">
+          <div className="relative max-w-[1240px] mx-auto px-5 sm:px-10 py-... flex flex-wrap items-center gap-18">
             <div className="flex-[6_1_460px] min-w-0">
               <div className="mock-window -rotate-[2.5deg] border border-[#3A3F3C] bg-[#0D0F0E] rounded-xl overflow-hidden" aria-hidden="true">
                 <div className="h-10 flex items-center gap-2 px-4 border-b border-[#2B2F2D]">
@@ -303,8 +361,8 @@ View Projects</button>
             <div className="flex-[5_1_340px] min-w-0"> 
 
               <p className="leading-[1.45] text-[#CFCEC7] font-[family-name:var(--jetbrains)] text-pretty">PLACEMENT · ONGOING</p>
-              <h2 className="text-[56px] leading-none tracking-[-0.03em] font-bold font-[family-name:var(--header)]" style={{color: '#eceae3'}}>Barnsley Hospital NHS</h2>
-              <p className="max-w-[28em] text-[22px] leading-[1.45] text-[#CFCEC7] text-pretty mt-5">Junior Applications Developer with the ICT Applications Development team. I work on SharePoint Framework web parts in TypeScript and React, and use GitLab day to day.</p>
+              <h2 className="text-[clamp(36px,8vw,56px)] leading-none tracking-[-0.03em] font-bold font-[family-name:var(--header)]" style={{color: '#eceae3'}}>Barnsley Hospital NHS</h2>
+              <p className="max-w-[28em] text-lg sm:text-[22px] leading-[1.45] text-[#CFCEC7] text-pretty mt-5">Junior Applications Developer with the ICT Applications Development team. I work on SharePoint Framework web parts in TypeScript and React, and use GitLab day to day.</p>
               <div className="flex flex-wrap gap-2.5 mt-3">
                 <Badge icon="M16 18l6-6-6-6M8 6l-6 6 6 6">SPFx</Badge>
                 <Badge icon="M16 18l6-6-6-6M8 6l-6 6 6 6">TypeScript</Badge>
@@ -317,9 +375,9 @@ View Projects</button>
           </div>
 
         </div>
-        <div className="dots relative py-32">
-          <div className="max-w-[1000px] mx-auto px-10 flex flex-col items-center text-center gap-7">
-            <div className="ghost text-[200px] font-[family-name:var(--header)]" aria-hidden="true">03</div>
+        <div className="dots relative py-20 sm:py-32">
+          <div className="max-w-[1000px] mx-auto px-5 sm:px-10 flex flex-col items-center text-center gap-7">
+            <div className="ghost text-[clamp(110px,20vw,200px)] font-[family-name:var(--header)]" aria-hidden="true">03</div>
 
             {/* label: First project · In progress */}
             <div className="flex items-center gap-2.5 ">
@@ -329,7 +387,7 @@ View Projects</button>
             </div>
 
             {/* title: This site */}
-            <h3 className="text-[clamp(48px,6vw,88px)] leading-[0.95] tracking-[-0.04em] font-[family-name:var(--header)] font-bold" style={{color: '#eceae3'}}>This site</h3>
+            <h3 className="text-[clamp(40px,6vw,88px)] leading-[0.95] tracking-[-0.04em] font-[family-name:var(--header)] font-bold" style={{color: '#eceae3'}}>This site</h3>
 
             {/* paragraph */}
             <p className="text-[#CFCEC7] text-pretty" style={{margin: 0, maxWidth: '30em', color: '#CFCEC7', fontSize: '19px', textWrap: 'pretty'}}>Rebuilt from scratch in React and TypeScript. It's my first proper project, and I'm learning the tooling by building it.</p>
@@ -359,11 +417,11 @@ View Projects</button>
       </section>
 
       <section id="skills" className="bg-[#181B1A] border-y border-[#2B2F2D]">
-        <div className="max-w-[1240px] mx-auto px-10 pt-32 pb-28 flex flex-col gap-16">
+        <div className="max-w-[1240px] mx-auto px-5 sm:px-10 pt-20 sm:pt-32 pb-20 sm:pb-28 flex flex-col gap-16">
           {/* title: Skills (h2, same sizing as the other big titles) */}
 
           <div className="flex flex-col">
-            <h2 className="text-[clamp(48px,6vw,88px)] text-[#ECEAE3] leading-[0.95] tracking-[-0.04em] font-bold font-[family-name:var(--header)]">Skills</h2>
+            <h2 className="text-[clamp(40px,6vw,88px)] text-[#ECEAE3] leading-[0.95] tracking-[-0.04em] font-bold font-[family-name:var(--header)]">Skills</h2>
             {/* row 1: Languages (icon M16 18l6-6-6-6M8 6l-6 6 6 6) — TypeScript, Python, C# (MVC) */}
             
 
@@ -419,7 +477,7 @@ View Projects</button>
 
         {/* outlined reverse ticker: C++ · WinAPI · Kernel · Linux (big outlined text, scrolls the other way) */}
         <div aria-hidden="true" className="border-t border-[#2B2F2D] overflow-hidden py-7">
-          <div className="ticker-track ticker-rev text-[96px] font-bold tracking-[-0.04em] leading-none">
+          <div className="ticker-track ticker-rev text-[clamp(56px,10vw,96px)] font-bold tracking-[-0.04em] leading-none">
             {[0, 1].map((copy) => (
               <div key={copy} className="flex items-center gap-12 pr-12 whitespace-nowrap text-transparent [-webkit-text-stroke:1px_#444A47]">
                 <span>C++</span><i className="w-3.5 h-3.5 bg-[var(--accent)] rotate-45"></i>
@@ -432,15 +490,15 @@ View Projects</button>
         </div>
 
       </section>
-      <section id="about" className="relative max-w-[1240px] mx-auto px-10 pt-32 pb-28">
+      <section id="about" className="relative max-w-[1240px] mx-auto px-5 sm:px-10 pt-20 sm:pt-32 pb-20 sm:pb-28">
         <div className="flex flex-wrap items-start gap-x-20 gap-y-16">
           <div className="flex-[7_1_520px] min-w-0 flex flex-col gap-[72px]">
             <div className="flex flex-col gap-8">
               {/* title: About (h2) */}
-              <h2 className="text-[clamp(48px,6vw,88px)] text-[#ECEAE3] leading-[0.95] tracking-[-0.04em] font-bold font-[family-name:var(--header)]">About</h2>
+              <h2 className="text-[clamp(40px,6vw,88px)] text-[#ECEAE3] leading-[0.95] tracking-[-0.04em] font-bold font-[family-name:var(--header)]">About</h2>
 
               {/* intro paragraph (large, ~32px, max-w-[22em]) */}
-              <p className="text-[22px] text-[#A4A69F] leading-[1.5] max-w-[22em]">I like understanding a system well enough to break it, then building it so it holds. I'm aiming at backend engineering with a systems and security lean: the layer most people never see.</p>
+              <p className="text-lg sm:text-[22px] text-[#A4A69F] leading-[1.5] max-w-[22em]">I like understanding a system well enough to break it, then building it so it holds. I'm aiming at backend engineering with a systems and security lean: the layer most people never see.</p>
             </div>
 
             <ol className="relative flex flex-col gap-10">
@@ -506,17 +564,17 @@ View Projects</button>
         </div>
       </section>
       <section id="contact" className="dots bg-[#181B1A] border-t border-[#2B2F2D]">
-        <div className="max-w-[1240px] mx-auto px-10 pt-32 pb-32 flex flex-wrap items-center gap-14">
+        <div className="max-w-[1240px] mx-auto px-5 sm:px-10 pt-20 sm:pt-32 pb-20 sm:pb-32 flex flex-wrap items-center gap-14">
           <div className="flex-[7_1_520px] min-w-0 flex flex-col gap-9">
             {/* title: Hiring, or just curious? Say hello. (h2, clamp(48px,6.4vw,96px)) */}
-            <h2 className="text-[clamp(48px,6.4vw,96px)] leading-[0.95] tracking-[-0.04em] font-bold font-[family-name:var(--header)]" style={{color: '#eceae3'}}>Hiring, or just curious? Say hello.</h2>
+            <h2 className="text-[clamp(36px,6.4vw,96px)] leading-[0.95] tracking-[-0.04em] font-bold font-[family-name:var(--header)]" style={{color: '#eceae3'}}>Hiring, or just curious? Say hello.</h2>
 
             {/* line: LinkedIn is the quickest way to reach me. (~20px) */}
-            <p className="text-[20px] text-[#A4A69F] font-[family-name:var(--jetbrains)]">LinkedIn is the quickest way to reach me.</p>
+            <p className="text-base sm:text-[20px] text-[#A4A69F] font-[family-name:var(--jetbrains)]">LinkedIn is the quickest way to reach me.</p>
 
             <div className="flex flex-wrap gap-3.5">
               {/* button 1 (primary): LinkedIn — icon M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z — then the up-right arrow */}
-              <a href="https://www.linkedin.com/in/matthew-matiyenga-3b5793355" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-[#2B2F2D] hover:bg-[#3A3F3C] text-[#ECEAE3] font-[family-name:var(--jetbrains)] text-sm border border-[#444A47] hover:border-[#555B58] transition-colors">
+              <a href="https://www.linkedin.com/in/matthew-matiyenga-3b5793355" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 min-h-11 px-4 py-2 bg-[#2B2F2D] hover:bg-[#3A3F3C] text-[#ECEAE3] font-[family-name:var(--jetbrains)] text-sm border border-[#444A47] hover:border-[#555B58] transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/>
                 </svg>
@@ -527,7 +585,7 @@ View Projects</button>
               </a>
 
               {/* button 2: GitHub — branch icon M6 3v12M18 9a3 3 0 100-6 3 3 0 000 6zM6 21a3 3 0 100-6 3 3 0 000 6zM18 9a9 9 0 01-9 9 — then the arrow */}
-              <a href="https://github.com/raze-raptor" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-[#2B2F2D] hover:bg-[#3A3F3C] text-[#ECEAE3] font-[family-name:var(--jetbrains)] text-sm border border-[#444A47] hover:border-[#555B58] transition-colors">
+              <a href="https://github.com/raze-raptor" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 min-h-11 px-4 py-2 bg-[#2B2F2D] hover:bg-[#3A3F3C] text-[#ECEAE3] font-[family-name:var(--jetbrains)] text-sm border border-[#444A47] hover:border-[#555B58] transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M6 3v12M18 9a3 3 0 100-6 3 3 0 000 6zM6 21a3 3 0 100-6 3 3 0 000 6zM18 9a9 9 0 01-9 9"/>
                 </svg>
@@ -595,7 +653,7 @@ View Projects</button>
     </main>
 
     <footer className="border-t border-[#2B2F2D]">
-      <div className="max-w-[1240px] mx-auto px-10 py-7 flex flex-wrap justify-between gap-x-8 gap-y-3 text-sm text-[#A4A69F]">
+      <div className="max-w-[1240px] mx-auto px-5 sm:px-10 py-7 flex flex-wrap justify-between gap-x-8 gap-y-3 text-sm text-[#A4A69F]">
         <span>© {new Date().getFullYear()} Matthew Matiyenga</span>
 
         {/* footer nav: Projects, Skills, About, Contact (anchor links) */}
