@@ -6,6 +6,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  overflow-x: clip;
+}
+
 
 :root {
   --color-accent: var(--accent);
@@ -146,6 +150,11 @@ html {
   animation: tickerScroll 45s linear infinite;
 }
 
+.ticker-rev {
+  animation-direction: reverse;
+  animation-duration: 60s;
+}
+
 @keyframes tickerScroll {
   to { transform: translateX(-50%); }
 }
@@ -171,6 +180,57 @@ html {
   color: transparent;
   -webkit-text-stroke: 1px #2F3431;
   user-select: none;
+}
+
+/* about: timeline + rotating ring */
+
+.tl-draw {
+  transform-origin: top;
+  animation: tlDraw 3.5s ease-out both;
+}
+@keyframes tlDraw {
+  from { transform: scaleY(0); }
+}
+
+.tl-ping {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  animation: tlPing 2.2s cubic-bezier(0,0,.2,1) infinite;
+}
+@keyframes tlPing {
+  75%, 100% { transform: scale(2.2); opacity: 0; }
+}
+
+.about-spin,
+.about-spin-rev,
+.about-orbit {
+  transform-origin: 200px 200px;
+  animation: aboutTurn 90s linear infinite;
+}
+.about-spin-rev { animation-duration: 140s; animation-direction: reverse; }
+.about-orbit { animation-duration: 18s; }
+@keyframes aboutTurn {
+  to { transform: rotate(360deg); }
+}
+
+.about-node {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+
+.about-pulse {
+  transform-origin: 200px 200px;
+  animation: aboutPulse 3.2s ease-out infinite;
+}
+@keyframes aboutPulse {
+  0% { transform: scale(1); opacity: .8; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-draw, .tl-ping, .about-spin, .about-spin-rev, .about-orbit, .about-pulse { animation: none; }
 }
 
 /* mock web part */

@@ -14,6 +14,12 @@ const citadelServices = [
   { name: 'Transmission', sub: 'DOWNLOADS', title: 'Torrent client', x: 980 },
 ]
 
+const timeline = [
+  { when: 'Next · September 2027', title: 'Degree apprenticeship', desc: 'After Barnsley College.', icon: 'M22 10L12 5 2 10l10 5zM6 12v5c3 2 9 2 12 0v-5', active: false, ping: false },
+  { when: 'Now · Until December 2026', title: 'Junior Applications Developer, placement', desc: 'ICT Applications Development, Barnsley Hospital NHS Foundation Trust.', icon: 'M2 7h20v14H2zM16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16', active: true, ping: true },
+  { when: 'Now', title: 'T Level in Software Development', desc: 'Barnsley College.', icon: 'M22 10L12 5 2 10l10 5zM6 12v5c3 2 9 2 12 0v-5', active: true, ping: false },
+]
+
 function Badge({ icon, className = '', children }: { icon?: string; className?: string; children: React.ReactNode }) {
   return (
     <span className={`badge h-8 px-3.5 gap-2 rounded-full border border-[#3A3F3C] bg-[#161918] text-[#ECEAE3] text-sm transition hover:-translate-y-0.5 hover:border-[var(--accent)] ${className}`}>
@@ -29,11 +35,12 @@ function Badge({ icon, className = '', children }: { icon?: string; className?: 
 
 function App() {
   return (
+    <>
     <main className="bg-[#121413] bg-[radial-gradient(#2B2F2D_1px,transparent_1px)] bg-[length:28px_28px]">
       <section id="hero" className="relative flex items-center dots min-h-screen">
         {/* hero */}
         <div id="hero-content" className="flex flex-wrap max-w-[1240px] w-full mx-auto px-10 py-24">
-          <div id="left-hero" className="flex-1 min-w-0">
+          <div id="left-hero" className="flex-[1_1_340px] min-w-0">
             <p className="flex items-center gap-2 font-[family-name:var(--jetbrains)]"><svg
   viewBox="0 0 24 24"
   className="w-5 h-5 flex-none fill-none stroke-current stroke-[1.75] [stroke-linecap:round] [stroke-linejoin:round]"
@@ -66,7 +73,7 @@ View Projects</button>
   </div>
 {/* SPINNING GLOBE */}
             </div>
-            <div id="right-hero" className="flex-1">
+            <div id="right-hero" className="flex-[1_1_340px] min-w-0">
               <div className="relative w-full max-w-[480px] mx-auto aspect-square">
                 <div className="orbit" aria-hidden="true">
                   <div className="orbit-slot"><div className="orbit-chip"><span>TS</span></div></div>
@@ -238,7 +245,7 @@ View Projects</button>
 
             <div className="flex flex-wrap gap-x-16 gap-y-10 items-start font-[family-name:var(--header)]">
               <p className="flex-[5_1_360px] min-w-0 text-[19px] text-pretty text-[#CFCEC7]">
-                My home server: a second-hand IBM x3650 in my bedroom. Every service sits behind a Cloudflare Tunnel and single sign-on, so nothing is exposed directly.
+                My home server: a second-hand IBM x3650 in my bedroom. Every service sits behind a Cloudflare Tunnel and single sign-on, so nothing is exposed directly. (You're connected to it right now!)
               </p>
 
               <div className="flex-[4_1_320px] min-w-0 flex flex-col gap-3.5">
@@ -411,11 +418,190 @@ View Projects</button>
         </div>
 
         {/* outlined reverse ticker: C++ · WinAPI · Kernel · Linux (big outlined text, scrolls the other way) */}
+        <div aria-hidden="true" className="border-t border-[#2B2F2D] overflow-hidden py-7">
+          <div className="ticker-track ticker-rev text-[96px] font-bold tracking-[-0.04em] leading-none">
+            {[0, 1].map((copy) => (
+              <div key={copy} className="flex items-center gap-12 pr-12 whitespace-nowrap text-transparent [-webkit-text-stroke:1px_#444A47]">
+                <span>C++</span><i className="w-3.5 h-3.5 bg-[var(--accent)] rotate-45"></i>
+                <span>WinAPI</span><i className="w-3.5 h-3.5 bg-[var(--accent)] rotate-45"></i>
+                <span>Kernel</span><i className="w-3.5 h-3.5 bg-[var(--accent)] rotate-45"></i>
+                <span>Linux</span><i className="w-3.5 h-3.5 bg-[var(--accent)] rotate-45"></i>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </section>
-      <section id="about" className="py-32">{/* about */}</section>
-      <section id="contact" className="dots bg-[#181B1A] py-32">{/* contact */}</section>
+      <section id="about" className="relative max-w-[1240px] mx-auto px-10 pt-32 pb-28">
+        <div className="flex flex-wrap items-start gap-x-20 gap-y-16">
+          <div className="flex-[7_1_520px] min-w-0 flex flex-col gap-[72px]">
+            <div className="flex flex-col gap-8">
+              {/* title: About (h2) */}
+              <h2 className="text-[clamp(48px,6vw,88px)] text-[#ECEAE3] leading-[0.95] tracking-[-0.04em] font-bold font-[family-name:var(--header)]">About</h2>
+
+              {/* intro paragraph (large, ~32px, max-w-[22em]) */}
+              <p className="text-[22px] text-[#A4A69F] leading-[1.5] max-w-[22em]">I like understanding a system well enough to break it, then building it so it holds. I'm aiming at backend engineering with a systems and security lean: the layer most people never see.</p>
+            </div>
+
+            <ol className="relative flex flex-col gap-10">
+              <div aria-hidden="true" className="absolute left-[11px] top-3 bottom-3 w-0.5 bg-[#2B2F2D]">
+                <div className="tl-draw h-full bg-[var(--accent)]"></div>
+              </div>
+
+              {timeline.map((t) => (
+                <li key={t.title} className="relative pl-16">
+                  <span className={`absolute left-0 top-1 w-6 h-6 rounded-full bg-[#121413] border-2 flex items-center justify-center ${t.active ? 'border-[var(--accent)] text-[var(--accent)]' : 'border-[#444A47] text-[#A4A69F]'}`}>
+                    {t.ping && <i className="tl-ping"></i>}
+                    <svg viewBox="0 0 24 24" className="w-3 h-3 fill-none stroke-current stroke-[2] [stroke-linecap:round] [stroke-linejoin:round]">
+                      <path d={t.icon} />
+                    </svg>
+                  </span>
+                  <span className={`block font-[family-name:var(--jetbrains)] text-sm uppercase tracking-[.06em] ${t.active ? 'text-[var(--accent)]' : 'text-[#A4A69F]'}`}>{t.when}</span>
+                  <strong className="block text-xl font-medium text-[#ECEAE3]">{t.title}</strong>
+                  <span className="block text-[#A4A69F]">{t.desc}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="flex-[4_1_320px] min-w-0 max-w-[440px] mx-auto self-center">
+            <svg viewBox="0 0 400 400" role="img" aria-label="Rotating ring reading Backend, Systems, Security, around a shield" className="block w-full h-auto overflow-visible">
+              <defs>
+                <radialGradient id="about-glow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0" style={{ stopColor: 'var(--accent)', stopOpacity: 0.28 }} />
+                  <stop offset="0.6" style={{ stopColor: 'var(--accent)', stopOpacity: 0.06 }} />
+                  <stop offset="1" style={{ stopColor: 'var(--accent)', stopOpacity: 0 }} />
+                </radialGradient>
+                <path id="about-text-path" d="M200 200m-168 0a168 168 0 1 1 336 0a168 168 0 1 1-336 0" />
+              </defs>
+
+              <circle cx="200" cy="200" r="190" fill="url(#about-glow)" />
+
+              <g className="about-spin-rev" fill="none">
+                <circle cx="200" cy="200" r="192" style={{ stroke: '#3A3F3C', strokeDasharray: '1 9' }} />
+              </g>
+
+              <g className="about-spin">
+                <text textLength="1040" lengthAdjust="spacing" style={{ font: "500 15px 'JetBrains Mono', monospace", fill: '#CFCEC7', letterSpacing: '0.06em' }}>
+                  <textPath href="#about-text-path">BACKEND · SYSTEMS · SECURITY · BACKEND · SYSTEMS · SECURITY · </textPath>
+                </text>
+              </g>
+
+              <circle cx="200" cy="200" r="138" fill="none" style={{ stroke: '#2B2F2D' }} />
+              <circle cx="200" cy="200" r="108" fill="none" style={{ stroke: 'var(--accent)', strokeOpacity: 0.5, strokeDasharray: '2 7' }} />
+
+              <g className="about-orbit">
+                <circle cx="200" cy="92" r="5" className="about-node" />
+                <circle cx="293.5" cy="254" r="5" className="about-node" />
+                <circle cx="106.5" cy="254" r="5" className="about-node" />
+              </g>
+
+              <circle cx="200" cy="200" r="58" fill="#121413" style={{ stroke: '#444A47' }} />
+              <circle cx="200" cy="200" r="58" fill="none" className="about-pulse" style={{ stroke: 'var(--accent)', strokeWidth: 1.5 }} />
+              <g transform="translate(164 164) scale(3)" fill="none" style={{ stroke: 'var(--accent)', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round' }}>
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </g>
+            </svg>
+          </div>
+        </div>
+      </section>
+      <section id="contact" className="dots bg-[#181B1A] border-t border-[#2B2F2D]">
+        <div className="max-w-[1240px] mx-auto px-10 pt-32 pb-32 flex flex-wrap items-center gap-14">
+          <div className="flex-[7_1_520px] min-w-0 flex flex-col gap-9">
+            {/* title: Hiring, or just curious? Say hello. (h2, clamp(48px,6.4vw,96px)) */}
+            <h2 className="text-[clamp(48px,6.4vw,96px)] leading-[0.95] tracking-[-0.04em] font-bold font-[family-name:var(--header)]" style={{color: '#eceae3'}}>Hiring, or just curious? Say hello.</h2>
+
+            {/* line: LinkedIn is the quickest way to reach me. (~20px) */}
+            <p className="text-[20px] text-[#A4A69F] font-[family-name:var(--jetbrains)]">LinkedIn is the quickest way to reach me.</p>
+
+            <div className="flex flex-wrap gap-3.5">
+              {/* button 1 (primary): LinkedIn — icon M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z — then the up-right arrow */}
+              <a href="https://www.linkedin.com/in/matthew-matiyenga-3b5793355" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-[#2B2F2D] hover:bg-[#3A3F3C] text-[#ECEAE3] font-[family-name:var(--jetbrains)] text-sm border border-[#444A47] hover:border-[#555B58] transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z"/>
+                </svg>
+                LinkedIn
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M7 17L17 7M7 7h10v10"/>
+                </svg>
+              </a>
+
+              {/* button 2: GitHub — branch icon M6 3v12M18 9a3 3 0 100-6 3 3 0 000 6zM6 21a3 3 0 100-6 3 3 0 000 6zM18 9a9 9 0 01-9 9 — then the arrow */}
+              <a href="https://github.com/raze-raptor" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-[#2B2F2D] hover:bg-[#3A3F3C] text-[#ECEAE3] font-[family-name:var(--jetbrains)] text-sm border border-[#444A47] hover:border-[#555B58] transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 3v12M18 9a3 3 0 100-6 3 3 0 000 6zM6 21a3 3 0 100-6 3 3 0 000 6zM18 9a9 9 0 01-9 9"/>
+                </svg>
+                GitHub
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M7 17L17 7M7 7h10v10"/>
+                </svg>
+              </a>
+
+              {/* {Will have download CV at some point} */}
+            </div>
+          </div>
+
+          <div className="flex-[3_1_260px] min-w-0 max-w-[340px] mx-auto">
+            <div className="group">
+              <svg viewBox="0 0 400 400" aria-hidden="true" className="block w-full h-auto overflow-visible">
+                <defs>
+                  <radialGradient id="hello-glow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0" style={{ stopColor: 'var(--accent)', stopOpacity: 0.35 }} />
+                    <stop offset="0.55" style={{ stopColor: 'var(--accent)', stopOpacity: 0.08 }} />
+                    <stop offset="1" style={{ stopColor: 'var(--accent)', stopOpacity: 0 }} />
+                  </radialGradient>
+                  <linearGradient id="hello-disc" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" style={{ stopColor: 'color-mix(in srgb, var(--accent) 70%, white)' }} />
+                    <stop offset="1" style={{ stopColor: 'var(--accent)' }} />
+                  </linearGradient>
+                  <path id="hello-text-path" d="M200 200m-168 0a168 168 0 1 1 336 0a168 168 0 1 1-336 0" />
+                </defs>
+
+                <circle cx="200" cy="200" r="195" fill="url(#hello-glow)" />
+
+                <g className="about-spin-rev" fill="none">
+                  <circle cx="200" cy="200" r="190" style={{ stroke: '#3A3F3C', strokeDasharray: '1 9' }} />
+                </g>
+
+                <g className="about-spin" style={{ animationDirection: 'reverse', animationDuration: '60s' }}>
+                  <text textLength="1040" lengthAdjust="spacing" style={{ font: "500 15px 'JetBrains Mono', monospace", fill: '#CFCEC7', letterSpacing: '0.06em' }}>
+                    <textPath href="#hello-text-path">SAY HELLO · SAY HELLO · SAY HELLO · SAY HELLO · SAY HELLO · </textPath>
+                  </text>
+                </g>
+
+                <circle cx="200" cy="200" r="134" fill="none" style={{ stroke: '#2B2F2D' }} />
+                <circle cx="200" cy="200" r="104" fill="none" style={{ stroke: 'var(--accent)', strokeOpacity: 0.45, strokeDasharray: '2 7' }} />
+
+                <g className="about-orbit" style={{ animationDuration: '14s' }}>
+                  <circle cx="200" cy="66" r="5" className="about-node" />
+                  <circle cx="316" cy="267" r="5" className="about-node" />
+                  <circle cx="84" cy="267" r="5" className="about-node" />
+                </g>
+
+                <g className="transition-transform duration-500 [transform-origin:200px_200px] group-hover:scale-110">
+                  <circle cx="200" cy="200" r="76" fill="none" className="about-pulse" style={{ stroke: 'var(--accent)', strokeWidth: 1.5 }} />
+                  <circle cx="200" cy="200" r="76" fill="url(#hello-disc)" style={{ filter: 'drop-shadow(0 0 22px color-mix(in srgb, var(--accent) 55%, transparent))' }} />
+                  <g transform="translate(172 172) scale(2)">
+                    <g className="transition-transform duration-300 group-hover:translate-x-[5px] group-hover:-translate-y-[5px]" fill="none" style={{ stroke: '#0B1112', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' }}>
+                      <path d="M5 23L23 5M5 5h18v18" />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-    
+
+    <footer className="border-t border-[#2B2F2D]">
+      <div className="max-w-[1240px] mx-auto px-10 py-7 flex flex-wrap justify-between gap-x-8 gap-y-3 text-sm text-[#A4A69F]">
+        <span>© {new Date().getFullYear()} Matthew Matiyenga</span>
+
+        {/* footer nav: Projects, Skills, About, Contact (anchor links) */}
+      </div>
+    </footer>
+    </>
   )
 }
 

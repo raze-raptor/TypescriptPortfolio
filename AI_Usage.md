@@ -115,6 +115,31 @@ I then asked for it to be much smoother and interactive with no new dependencies
 
 AI was unavoidable here. The four row icons (Languages, Frameworks, Tools, Learning now) come from the design document as raw SVG path data, which I can't write or derive by hand, so AI added them next to each label. The rest of the Skills section is my own work.
 
+### Skills section: what AI also did
+
+- **Skeleton:** AI laid out the section wrapper and commented slots (title, four rows, reverse ticker); I filled in the title, the four rows and their badges.
+- **Bug diagnosis:** AI explained why my row labels wouldn't change colour (an inline `style` prop overrides Tailwind classes) and why headings look dim (Tailwind's reset gives them no colour). At my request AI removed the four inline `style` props.
+- **`Badge` fix:** AI made the `icon` prop optional so skill chips without an icon don't leave an empty gap.
+- **Reverse ticker:** AI converted the design document's outlined ticker markup to JSX and added a `.ticker-rev` modifier (reverse direction, slower) to `index.css`, reusing my `.ticker-track` from the tech ticker.
+
+---
+
+## 2026-10-17 — About section: timeline and rotating ring [AI-BUILT; title and intro are mine]
+
+**What happened:** AI laid out the section wireframe (two columns, commented slots); I wrote the "About" title and intro paragraph. At my request AI then built the timeline and the right-hand graphic. The timeline's three entries come from a small `timeline` array in `App.tsx` rendered with `.map()`, with a vertical line that draws itself and a pinging marker on the current entry. The graphic is an SVG I can't hand-draw: a glowing, rotating ring of "BACKEND · SYSTEMS · SECURITY" text (SVG `<textPath>`), a counter-rotating dotted ring, three glowing orbiting nodes, and a pulsing shield in the centre, redesigned to be richer than the design document's version. All CSS-only, no new dependencies, under `/* about: timeline + rotating ring */` in `index.css`, with a `prefers-reduced-motion` override. **Worth understanding:** SVG `<textPath>` (text that follows a path), and rotating SVG groups with `transform-origin` in user-space units.
+
+---
+
+## 2026-10-17 — Contact section: "SAY HELLO" badge [AI-BUILT; wireframe by AI, content mine]
+
+**What happened:** AI set up the Contact wireframe (two columns, commented slots, footer slot, and a React fragment so `<main>` and `<footer>` can sit side by side). The spinning "SAY HELLO" badge is an SVG graphic I can't hand-draw, so I asked AI to build it at a higher quality than the design document's. It reuses the CSS animation classes from the About ring (`.about-spin`, `.about-orbit`, `.about-pulse`) and adds a glowing background, two counter-rotating rings, three orbiting nodes, and a gradient disc with an arrow that grows and nudges on hover. No new CSS dependencies. The headline, text, buttons and footer content are mine to write. **Worth understanding:** Tailwind `group` / `group-hover:` applied to SVG parts, and reusing one set of animation classes across two graphics.
+
+---
+
+## 2026-10-17 — Contact finishing, footer, and responsive testing [AI-FIX]
+
+**What happened:** I wrote the Contact headline, line, LinkedIn/GitHub buttons and footer content myself. AI restored the "SAY HELLO" badge after it was lost, made the LinkedIn and GitHub buttons real links (`<a href>` with `rel="noopener noreferrer"`) and replaced their broken arrow icons, and filled the copyright line with my name and a year taken from the current date. I then asked AI to test and fix responsiveness. It loaded the site in a 390px-wide frame and measured it. It found two real problems: (1) the hero's two columns used `flex-1`, whose flex-basis is zero, so `flex-wrap` could never wrap them on a phone and the globe overlapped my name; fixed by giving both a real basis (`flex-[1_1_340px]`); and (2) the rotating decorative graphics stretched the page wider than the viewport, fixed with `overflow-x: clip` on `body`. Every other section stacked correctly. **Worth understanding:** why `flex-1` can't wrap but `flex-[1_1_340px]` can, and why animated SVG that overflows its box can create sideways scrolling.
+
 ---
 
 ## 2026-10-16 — Indeed banner export (`banner/`, gitignored, not part of the site) [AI-BUILT]
